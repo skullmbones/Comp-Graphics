@@ -1,0 +1,33 @@
+extends CharacterBody2D
+
+@export var speed = 400
+@export var jump_velocity = -500
+var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
+var screen_size
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	screen_size = get_viewport_rect().size
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _physics_process(delta: float) -> void:
+	if not is_on_floor():
+		velocity.y += gravity * delta
+	
+	if Input.is_action_just_pressed("move_jump") and is_on_floor():
+		velocity.y = jump_velocity
+		
+	var direction = Input.get_axis("move_left", "move_right")
+	if direction == 1:
+		get_node("AnimatedSprite2D").flip_h = true
+	elif direction == -1:
+		get_node("AnimatedSprite2D").flip_h = false
+	if direction:
+		velocity.x = direction * speed
+	else:
+		velocity.x = move_toward(velocity.x, 0, speed)
+
+	position = position.clamp(Vector2.ZERO, screen_size)
+		
+	move_and_slide()

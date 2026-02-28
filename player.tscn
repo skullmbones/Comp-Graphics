@@ -18,6 +18,9 @@ animations = [{
 radius = 4.0
 height = 16.0
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_onrkg"]
+size = Vector2(6, 12)
+
 [node name="Player" type="CharacterBody2D" unique_id=1812544709]
 script = ExtResource("1_onrkg")
 metadata/_edit_horizontal_guides_ = [-4.0]
@@ -30,3 +33,12 @@ sprite_frames = SubResource("SpriteFrames_onrkg")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=340098153]
 shape = SubResource("CapsuleShape2D_i3pqv")
+
+[node name="Hurtbox" type="Area2D" parent="." unique_id=151672772]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox" unique_id=1148266349]
+shape = SubResource("RectangleShape2D_onrkg")
+
+[connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]

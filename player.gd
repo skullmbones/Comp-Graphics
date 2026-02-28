@@ -3,6 +3,8 @@ extends CharacterBody2D
 @export var speed = 400
 @export var jump_velocity = -500
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
+var max_health = 100
+var health = 100
 var screen_size
 
 # Called when the node enters the scene tree for the first time.
@@ -31,3 +33,17 @@ func _physics_process(delta: float) -> void:
 	position = position.clamp(Vector2.ZERO, screen_size)
 		
 	move_and_slide()
+	
+func hit(amount) -> void:
+	health -= amount
+	health = clamp(health, 0, max_health)
+	if health <= 0:
+		_die()
+	
+func _die() -> void:
+	#TODO: Replace with actual game over
+	queue_free()
+
+
+func _on_hurtbox_area_entered(area: Area2D) -> void:
+	hit(100) #Change with actual enemy damage values

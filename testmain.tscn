@@ -11,6 +11,8 @@ size = Vector2(492.15582, 20)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_e4sdq"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e4sdq"]
+
 [node name="Node2D" type="Node2D" unique_id=1182927875 groups=["player"]]
 scale = Vector2(1.3418899, 3.0657997)
 
@@ -48,3 +50,11 @@ debug_color = Color(0.3866088, 0.4454574, 0.2274054, 0.41960785)
 [node name="Sprite2D" type="Sprite2D" parent="enemy" unique_id=371119148]
 scale = Vector2(0.25, 0.25)
 texture = ExtResource("3_e4sdq")
+
+[node name="Hitbox" type="Area2D" parent="enemy" unique_id=1124123421]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="enemy/Hitbox" unique_id=1142046492]
+scale = Vector2(2.3655074, 1.5898846)
+shape = SubResource("RectangleShape2D_e4sdq")

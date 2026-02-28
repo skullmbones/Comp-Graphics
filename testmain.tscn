@@ -1,19 +1,50 @@
 [gd_scene format=3 uid="uid://bj3tu15svb88d"]
 
 [ext_resource type="PackedScene" uid="uid://c88voq5qyiykq" path="res://player.tscn" id="1_lc8tu"]
+[ext_resource type="Script" uid="uid://yih7hoexa30w" path="res://enemy.gd" id="2_s57mk"]
+[ext_resource type="Texture2D" uid="uid://duj6cri6cpv1w" path="res://icon.svg" id="3_e4sdq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lc8tu"]
 size = Vector2(492.15582, 20)
 
-[node name="Node2D" type="Node2D" unique_id=1182927875]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_e4sdq"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_e4sdq"]
+
+[node name="Node2D" type="Node2D" unique_id=1182927875 groups=["player"]]
 scale = Vector2(1.3418899, 3.0657997)
 
-[node name="Player" parent="." unique_id=2117267111 instance=ExtResource("1_lc8tu")]
+[node name="Player" parent="." unique_id=2117267111 groups=["player"] instance=ExtResource("1_lc8tu")]
 position = Vector2(131.15831, 34.574993)
 scale = Vector2(2.0731134, 1)
 
 [node name="Area2D" type="StaticBody2D" parent="." unique_id=1547490194]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=2001653828]
+modulate = Color(0, 0, 0, 1)
 position = Vector2(276.47574, 174.83203)
+scale = Vector2(3, 3)
 shape = SubResource("RectangleShape2D_lc8tu")
+
+[node name="enemy" type="CharacterBody2D" parent="." unique_id=1536292073]
+script = ExtResource("2_s57mk")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="enemy" unique_id=1386002991]
+shape = SubResource("CapsuleShape2D_e4sdq")
+
+[node name="ground" type="RayCast2D" parent="enemy" unique_id=2118076192]
+target_position = Vector2(16, 32)
+
+[node name="wall" type="RayCast2D" parent="enemy" unique_id=1634965508]
+target_position = Vector2(16, 0)
+
+[node name="vision" type="Area2D" parent="enemy" unique_id=1317572102]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="enemy/vision" unique_id=1488507017]
+scale = Vector2(14, 1)
+shape = SubResource("CircleShape2D_e4sdq")
+debug_color = Color(0.3866088, 0.4454574, 0.2274054, 0.41960785)
+
+[node name="Sprite2D" type="Sprite2D" parent="enemy" unique_id=371119148]
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("3_e4sdq")

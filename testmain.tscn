@@ -3,6 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://c88voq5qyiykq" path="res://player.tscn" id="1_lc8tu"]
 [ext_resource type="Script" uid="uid://yih7hoexa30w" path="res://enemy.gd" id="2_s57mk"]
 [ext_resource type="Texture2D" uid="uid://extiqhkws2y1" path="res://Assets/Upside Downer/UDstandright.png" id="3_54qtu"]
+[ext_resource type="Texture2D" uid="uid://duj6cri6cpv1w" path="res://icon.svg" id="3_e4sdq"]
 [ext_resource type="Texture2D" uid="uid://bk25f0pqsqpyl" path="res://Assets/Upside Downer/Kill/UDkill1.png" id="4_qs81r"]
 [ext_resource type="Texture2D" uid="uid://cy1ylif2d6mbk" path="res://Assets/Upside Downer/Walk/UDwalk1.png" id="4_yjnjh"]
 [ext_resource type="Texture2D" uid="uid://cf0a4nwkx3mso" path="res://Assets/Upside Downer/Walk/UDwalk2.png" id="5_bm5qh"]
@@ -258,13 +259,18 @@ position = Vector2(123.706116, 37.184425)
 scale = Vector2(2.0702717, 1)
 speed = 100
 
-[node name="Area2D" type="StaticBody2D" parent="." unique_id=1547490194]
+[node name="Area2D" type="StaticBody2D" parent="." unique_id=117612440]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=2001653828]
 modulate = Color(0, 0, 0, 1)
 position = Vector2(429.9907, 174.83203)
 scale = Vector2(3.0000005, 3)
 shape = SubResource("RectangleShape2D_lc8tu")
+
+[node name="Sprite2D" type="Sprite2D" parent="Area2D" unique_id=42229886]
+position = Vector2(431.10843, 175.15822)
+scale = Vector2(6.654561, 0.46888262)
+texture = ExtResource("3_e4sdq")
 
 [node name="enemy" type="CharacterBody2D" parent="." unique_id=1536292073]
 position = Vector2(680.3837, 83.17569)

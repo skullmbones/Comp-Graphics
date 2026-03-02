@@ -41,7 +41,7 @@ func _physics_process(delta: float) -> void:
 		State.CHASE:
 			_chase()
 			
-	if velocity.x > 0:
+	if velocity.x != 0:
 		$AnimatedSprite2D.play("walk")
 	else:
 		$AnimatedSprite2D.play("default")

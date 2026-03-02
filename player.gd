@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-@export var speed = 400
+@export var speed = 200
 @export var jump_velocity = -500
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var max_health = 100
@@ -22,13 +22,15 @@ func _physics_process(delta: float) -> void:
 		
 	var direction = Input.get_axis("move_left", "move_right")
 	if direction == 1:
-		get_node("AnimatedSprite2D").flip_h = true
-	elif direction == -1:
 		get_node("AnimatedSprite2D").flip_h = false
+	elif direction == -1:
+		get_node("AnimatedSprite2D").flip_h = true
 	if direction:
 		velocity.x = direction * speed
+		$AnimatedSprite2D.play("walk")
 	else:
 		velocity.x = move_toward(velocity.x, 0, speed)
+		$AnimatedSprite2D.play("default")
 
 	position = position.clamp(Vector2.ZERO, screen_size)
 		

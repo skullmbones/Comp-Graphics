@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://datjoma1hax56"
-path="res://.godot/imported/CharacterPlaceholder.png-3c0e3532c7b3c3f49381c269e544a8f6.ctex"
+uid="uid://bprewiplubqpf"
+path="res://.godot/imported/UDkill11.png-00c43d286b37c461dabc2241054eeb0b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://CharacterPlaceholder.png"
-dest_files=["res://.godot/imported/CharacterPlaceholder.png-3c0e3532c7b3c3f49381c269e544a8f6.ctex"]
+source_file="res://Assets/Upside Downer/Kill/UDkill11.png"
+dest_files=["res://.godot/imported/UDkill11.png-00c43d286b37c461dabc2241054eeb0b.ctex"]
 
 [params]
 

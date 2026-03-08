@@ -10,3 +10,13 @@ func _on_retry_pressed() -> void:
 func game_over():
 	get_tree().paused = true
 	self.show()
+	
+func win():
+	get_tree().paused = true
+	$Label.text = "You Win"
+	$Retry.text = "Play Again"
+	self.show()
+
+
+func _on_quit_pressed() -> void:
+	get_tree().quit()

@@ -150,6 +150,7 @@ scale = Vector2(0.11826371, 0.05860278)
 texture = ExtResource("15_606se")
 
 [node name="CooldownTimer" type="Timer" parent="Hitbox" unique_id=1157699747]
+wait_time = 0.5
 one_shot = true
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1446164364]

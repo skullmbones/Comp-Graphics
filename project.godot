@@ -19,6 +19,10 @@ run/main_scene="uid://bj3tu15svb88d"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
 
+[display]
+
+window/stretch/mode="viewport"
+
 [global_group]
 
 player=""

@@ -58,7 +58,6 @@
 [ext_resource type="Texture2D" uid="uid://hsjwvxh3v1hg" path="res://Assets/Upside Downer/Kill/UDkill28.png" id="31_6gaqd"]
 [ext_resource type="Texture2D" uid="uid://bqupir78kg0it" path="res://Assets/Upside Downer/Kill/UDkill29.png" id="32_30e63"]
 [ext_resource type="Texture2D" uid="uid://bdonwo1d6a6s7" path="res://Assets/Upside Downer/Kill/UDkill30.png" id="33_rql44"]
-[ext_resource type="Script" uid="uid://ce1yc6jmq6qwy" path="res://game_over.gd" id="59_d443u"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lc8tu"]
 size = Vector2(284.17633, 20)
@@ -272,7 +271,7 @@ position = Vector2(431.10843, 175.15822)
 scale = Vector2(6.654561, 0.46888262)
 texture = ExtResource("3_e4sdq")
 
-[node name="enemy" type="CharacterBody2D" parent="." unique_id=1536292073 groups=["Enemies"]]
+[node name="enemy" type="CharacterBody2D" parent="." unique_id=1536292073]
 position = Vector2(680.3837, 83.17569)
 script = ExtResource("2_s57mk")
 
@@ -302,35 +301,5 @@ collision_layer = 2
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="enemy/Hitbox" unique_id=1142046492]
-light_mask = 2
-visibility_layer = 2
 scale = Vector2(2.3655074, 1.5898846)
 shape = SubResource("RectangleShape2D_e4sdq")
-
-[node name="GameOver" type="CanvasLayer" parent="." unique_id=287233086]
-process_mode = 3
-script = ExtResource("59_d443u")
-
-[node name="Panel" type="Panel" parent="GameOver" unique_id=393088570]
-offset_right = 1155.0
-offset_bottom = 645.0
-
-[node name="Label" type="Label" parent="GameOver" unique_id=206177265]
-offset_left = 28.0
-offset_top = 24.0
-offset_right = 1113.0
-offset_bottom = 297.0
-theme_override_font_sizes/font_size = 100
-text = "Game Over"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Retry" type="Button" parent="GameOver" unique_id=352240430]
-offset_left = 509.0
-offset_top = 354.0
-offset_right = 647.0
-offset_bottom = 447.0
-text = "Retry"
-
-[connection signal="area_entered" from="enemy/Hitbox" to="enemy" method="_on_hitbox_area_entered"]
-[connection signal="pressed" from="GameOver/Retry" to="GameOver" method="_on_retry_pressed"]

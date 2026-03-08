@@ -14,6 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://f1pdtrg7ic4f" path="res://Assets/Player/Walk/playerwalk10.png" id="12_7lmhl"]
 [ext_resource type="Texture2D" uid="uid://cowah1mme7c7l" path="res://Assets/Player/Walk/playerwalk11.png" id="13_dx0e4"]
 [ext_resource type="Texture2D" uid="uid://b7nxv1c31i7xt" path="res://Assets/Player/Walk/playerwalk12.png" id="14_jm5j8"]
+[ext_resource type="Texture2D" uid="uid://duj6cri6cpv1w" path="res://icon.svg" id="15_606se"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_onrkg"]
 animations = [{
@@ -27,14 +28,34 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": ExtResource("8_pylmc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_pylmc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_pbfsw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_pbfsw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_dx0e4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_dx0e4")
+}, {
+"duration": 1.0,
 "texture": ExtResource("3_bwjto")
 }, {
 "duration": 1.0,
-"texture": ExtResource("4_606se")
+"texture": ExtResource("3_bwjto")
+}],
+"loop": true,
+"name": &"sprint",
+"speed": 10.0
 }, {
-"duration": 1.0,
-"texture": ExtResource("5_u1c27")
-}, {
+"frames": [{
 "duration": 1.0,
 "texture": ExtResource("6_op7ga")
 }, {
@@ -61,6 +82,15 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": ExtResource("14_jm5j8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_bwjto")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_606se")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_u1c27")
 }],
 "loop": true,
 "name": &"walk",
@@ -74,6 +104,10 @@ height = 16.0
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_onrkg"]
 size = Vector2(6, 12)
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_bwjto"]
+radius = 4.0
+height = 16.0
+
 [node name="Player" type="CharacterBody2D" unique_id=1812544709]
 script = ExtResource("1_onrkg")
 metadata/_edit_horizontal_guides_ = [-4.0]
@@ -84,9 +118,7 @@ texture_filter = 1
 position = Vector2(-0.01201725, 0.097383976)
 scale = Vector2(0.5192693, 0.47136202)
 sprite_frames = SubResource("SpriteFrames_onrkg")
-animation = &"walk"
-frame = 3
-frame_progress = 0.06810966
+animation = &"sprint"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=340098153]
 scale = Vector2(1, 0.9599999)
@@ -99,4 +131,31 @@ collision_mask = 2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox" unique_id=1148266349]
 shape = SubResource("RectangleShape2D_onrkg")
 
+[node name="Hitbox" type="Area2D" parent="." unique_id=1591100877 groups=["player"]]
+collision_layer = 2
+collision_mask = 2
+monitoring = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" unique_id=333020453]
+light_mask = 2
+visibility_layer = 2
+position = Vector2(12, 0)
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_bwjto")
+
+[node name="Sprite2D" type="Sprite2D" parent="Hitbox" unique_id=1139847364]
+visible = false
+position = Vector2(12, 0)
+scale = Vector2(0.11826371, 0.05860278)
+texture = ExtResource("15_606se")
+
+[node name="CooldownTimer" type="Timer" parent="Hitbox" unique_id=1157699747]
+one_shot = true
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1446164364]
+process_callback = 0
+position_smoothing_enabled = true
+
 [connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]
+[connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]
+[connection signal="timeout" from="Hitbox/CooldownTimer" to="." method="_on_cooldown_timer_timeout"]

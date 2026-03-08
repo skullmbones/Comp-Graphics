@@ -1,5 +1,6 @@
 extends CharacterBody2D
 
+var health = 75
 enum State { PATROL, CHASE, RETURN }
 var state: State = State.PATROL
 
@@ -159,3 +160,14 @@ func _on_vision_body_exited(body: Node) -> void:
 	if body == player:
 		player = null
 		state = State.RETURN
+		
+func take_damage(amount) -> void:
+	health -= amount
+	print(health)
+	if health <= 0:
+		queue_free()
+
+
+func _on_hitbox_area_entered(area: Area2D) -> void:
+	if area.is_in_group("player"):
+		take_damage(25)

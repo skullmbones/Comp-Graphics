@@ -61,6 +61,7 @@
 [ext_resource type="Script" uid="uid://ce1yc6jmq6qwy" path="res://game_over.gd" id="59_d443u"]
 [ext_resource type="Script" uid="uid://bcf7lu6hrf85n" path="res://objective.gd" id="60_fgn3h"]
 [ext_resource type="Script" uid="uid://c1ihhwi7hpvil" path="res://goal.gd" id="61_0brfu"]
+[ext_resource type="Script" uid="uid://cv5bb3aos8vu7" path="res://hud.gd" id="62_ylfqa"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ylfqa"]
 size = Vector2(30.120878, 23.699532)
@@ -372,9 +373,44 @@ position = Vector2(824.5834, 134.05965)
 scale = Vector2(0.14552246, 0.06170029)
 shape = SubResource("RectangleShape2D_0brfu")
 
+[node name="HUD" type="CanvasLayer" parent="." unique_id=1454347668 groups=["hud"]]
+script = ExtResource("62_ylfqa")
+
+[node name="LeftMargin" type="MarginContainer" parent="HUD" unique_id=931600726]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HUD/LeftMargin" unique_id=1914727262]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="HP" type="Label" parent="HUD/LeftMargin/VBoxContainer" unique_id=1774584304]
+layout_mode = 2
+text = "HP:"
+
+[node name="HPBar" type="ProgressBar" parent="HUD/LeftMargin/VBoxContainer" unique_id=131498967]
+custom_minimum_size = Vector2(200, 20)
+layout_mode = 2
+max_value = 10.0
+value = 10.0
+show_percentage = false
+
+[node name="KeyLabel" type="Label" parent="HUD/LeftMargin/VBoxContainer" unique_id=25658536]
+layout_mode = 2
+text = "Keys: 0"
+
+[node name="TimerLabel" type="Label" parent="HUD" unique_id=1907119273]
+custom_minimum_size = Vector2(-20, 20)
+offset_left = 1063.0
+offset_top = 19.0
+offset_right = 1120.0
+offset_bottom = 45.0
+text = "Time: 0"
+horizontal_alignment = 2
+
 [connection signal="body_entered" from="Goal" to="Goal" method="_on_body_entered"]
 [connection signal="area_entered" from="enemy/Hitbox" to="enemy" method="_on_hitbox_area_entered"]
 [connection signal="pressed" from="GameOver/Retry" to="GameOver" method="_on_retry_pressed"]
 [connection signal="pressed" from="GameOver/Quit" to="GameOver" method="_on_quit_pressed"]
-[connection signal="body_entered" from="Objective" to="Objective" method="_on_body_entered"]
 [connection signal="body_entered" from="Objective" to="Goal" method="_on_objective_body_entered"]
+[connection signal="body_entered" from="Objective" to="Objective" method="_on_body_entered"]

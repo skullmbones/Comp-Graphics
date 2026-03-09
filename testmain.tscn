@@ -68,6 +68,10 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ylfqa"]
 size = Vector2(30.120878, 23.699532)
 
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_irx12"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_rn6st"]
+
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_e4sdq"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_e4sdq"]
@@ -277,6 +281,26 @@ shape = SubResource("RectangleShape2D_ylfqa")
 
 [node name="Level_0" parent="." unique_id=1935365678 instance=ExtResource("4_ug6is")]
 scale = Vector2(1.6744857, 0.8184477)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=614915524]
+scale = Vector2(1.6762155, 0.81805205)
+disable_mode = 2
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D" unique_id=493196236]
+polygon = PackedVector2Array(0, 257, 512, 256, 512, 209, 463, 209, 463, 193, 447, 193, 447, 176, 319, 176, 319, 160, 304, 160, 304, 144, 208, 144, 208, 160, 160, 160, 160, 176, 0, 176)
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="StaticBody2D" unique_id=329621929]
+polygon = PackedVector2Array(0, 0, 0, 95, 96, 95, 96, 80, 112, 80, 112, 65, 160, 65, 160, 80, 192, 80, 192, 64, 208, 64, 208, 48, 223, 48, 223, 64, 239, 64, 239, 79, 288, 79, 288, 64, 304, 64, 304, 48, 336, 48, 336, 63, 368, 64, 368, 80, 400, 80, 400, 96, 432, 96, 432, 112, 464, 112, 464, 96, 496, 96, 496, 112, 512, 112, 512, -1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=119838808]
+position = Vector2(-2, 150)
+rotation = 1.5707964
+shape = SubResource("WorldBoundaryShape2D_irx12")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D" unique_id=657629962]
+position = Vector2(513, 159)
+rotation = -1.5707964
+shape = SubResource("WorldBoundaryShape2D_rn6st")
 
 [node name="Player" parent="." unique_id=2117267111 groups=["player"] instance=ExtResource("1_lc8tu")]
 position = Vector2(105.82091, 128.18842)

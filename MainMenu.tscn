@@ -1,6 +1,9 @@
-[gd_scene load_steps=2 format=3 uid="uid://6j5rrpbhinph"]
+[gd_scene load_steps=5 format=3 uid="uid://6j5rrpbhinph"]
 
-[ext_resource type="Script" uid="uid://b5bxhpfwq0j21" path="res://button_manager.gd" id="1_i26rj"]
+[ext_resource type="Texture2D" uid="uid://b4bay6uax5c58" path="res://Assets/menuscreen.png" id="1_eiy7p"]
+[ext_resource type="Script" uid="uid://d0n207v0rceeb" path="res://control.gd" id="1_qoqlk"]
+[ext_resource type="Texture2D" uid="uid://d1kcdltgm7qdo" path="res://Assets/playbuttonlarge.png" id="2_iwfq2"]
+[ext_resource type="Texture2D" uid="uid://4rmnpj8j3q4x" path="res://Assets/quitbuttonlarge.png" id="3_7r1g0"]
 
 [node name="MainMenu" type="Node2D"]
 position = Vector2(344, 280)
@@ -10,23 +13,24 @@ layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
-script = ExtResource("1_i26rj")
+script = ExtResource("1_qoqlk")
 
-[node name="Start" type="Button" parent="Button Manager"]
+[node name="Play" type="TextureButton" parent="Button Manager"]
 layout_mode = 0
-offset_left = 101.0
-offset_top = 46.0
-offset_right = 335.0
-offset_bottom = 88.0
-text = "Start"
+offset_left = -338.0
+offset_top = 71.0
+offset_right = 174.0
+offset_bottom = 295.0
+texture_normal = ExtResource("2_iwfq2")
 
-[node name="Quit" type="Button" parent="Button Manager"]
+[node name="Quit" type="TextureButton" parent="Button Manager"]
 layout_mode = 0
-offset_left = 99.0
-offset_top = 104.0
-offset_right = 336.0
-offset_bottom = 154.0
-text = "Quit"
+offset_left = 163.0
+offset_top = 59.0
+offset_right = 675.0
+offset_bottom = 283.0
+texture_normal = ExtResource("3_7r1g0")
 
-[connection signal="pressed" from="Button Manager/Start" to="." method="_on_start_pressed"]
-[connection signal="pressed" from="Button Manager/Quit" to="." method="_on_quit_pressed"]
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(167, 10)
+texture = ExtResource("1_eiy7p")

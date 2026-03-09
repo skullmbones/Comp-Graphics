@@ -1,10 +1,11 @@
-[gd_scene load_steps=0 format=3 uid="uid://bj3tu15svb88d"]
+[gd_scene format=3 uid="uid://bj3tu15svb88d"]
 
 [ext_resource type="PackedScene" uid="uid://c88voq5qyiykq" path="res://player.tscn" id="1_lc8tu"]
 [ext_resource type="Script" uid="uid://yih7hoexa30w" path="res://enemy.gd" id="2_s57mk"]
 [ext_resource type="Texture2D" uid="uid://extiqhkws2y1" path="res://Assets/Upside Downer/UDstandright.png" id="3_54qtu"]
 [ext_resource type="Texture2D" uid="uid://duj6cri6cpv1w" path="res://icon.svg" id="3_e4sdq"]
 [ext_resource type="Texture2D" uid="uid://bk25f0pqsqpyl" path="res://Assets/Upside Downer/Kill/UDkill1.png" id="4_qs81r"]
+[ext_resource type="PackedScene" uid="uid://yioswovg8mg5" path="res://ldtk/levels/Level_0.scn" id="4_ug6is"]
 [ext_resource type="Texture2D" uid="uid://cy1ylif2d6mbk" path="res://Assets/Upside Downer/Walk/UDwalk1.png" id="4_yjnjh"]
 [ext_resource type="Texture2D" uid="uid://cf0a4nwkx3mso" path="res://Assets/Upside Downer/Walk/UDwalk2.png" id="5_bm5qh"]
 [ext_resource type="Texture2D" uid="uid://b870h7nowlcbm" path="res://Assets/Upside Downer/Kill/UDkill2.png" id="5_na6my"]
@@ -61,13 +62,10 @@
 [ext_resource type="Script" uid="uid://ce1yc6jmq6qwy" path="res://game_over.gd" id="59_d443u"]
 [ext_resource type="Script" uid="uid://bcf7lu6hrf85n" path="res://objective.gd" id="60_fgn3h"]
 [ext_resource type="Script" uid="uid://c1ihhwi7hpvil" path="res://goal.gd" id="61_0brfu"]
-[ext_resource type="Script" uid="uid://cv5bb3aos8vu7" path="res://hud.gd" id="62_ylfqa"]
+[ext_resource type="Script" path="res://hud.gd" id="63_ug6is"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ylfqa"]
 size = Vector2(30.120878, 23.699532)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_lc8tu"]
-size = Vector2(284.17633, 20)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_e4sdq"]
 
@@ -276,25 +274,16 @@ texture = ExtResource("3_e4sdq")
 position = Vector2(23.690884, 131.55753)
 shape = SubResource("RectangleShape2D_ylfqa")
 
+[node name="Level_0" parent="." unique_id=1935365678 instance=ExtResource("4_ug6is")]
+scale = Vector2(1.6744857, 0.8184477)
+
 [node name="Player" parent="." unique_id=2117267111 groups=["player"] instance=ExtResource("1_lc8tu")]
-position = Vector2(123.706116, 37.184425)
+position = Vector2(105.82091, 128.18842)
 scale = Vector2(2.0702717, 1)
-
-[node name="Area2D" type="StaticBody2D" parent="." unique_id=117612440]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=2001653828]
-modulate = Color(0, 0, 0, 1)
-position = Vector2(429.9907, 174.83203)
-scale = Vector2(3.0000005, 3)
-shape = SubResource("RectangleShape2D_lc8tu")
-
-[node name="Sprite2D" type="Sprite2D" parent="Area2D" unique_id=42229886]
-position = Vector2(431.10843, 175.15822)
-scale = Vector2(6.654561, 0.46888262)
-texture = ExtResource("3_e4sdq")
+disable_mode = 2
 
 [node name="enemy" type="CharacterBody2D" parent="." unique_id=1536292073 groups=["Enemies"]]
-position = Vector2(680.3837, 83.17569)
+position = Vector2(690.07153, 123.94808)
 script = ExtResource("2_s57mk")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="enemy" unique_id=1386002991]
@@ -374,7 +363,7 @@ scale = Vector2(0.14552246, 0.06170029)
 shape = SubResource("RectangleShape2D_0brfu")
 
 [node name="HUD" type="CanvasLayer" parent="." unique_id=1454347668 groups=["hud"]]
-script = ExtResource("62_ylfqa")
+script = ExtResource("63_ug6is")
 
 [node name="LeftMargin" type="MarginContainer" parent="HUD" unique_id=931600726]
 offset_right = 40.0

@@ -49,7 +49,7 @@ func _physics_process(delta: float) -> void:
 		#attack animation
 		$Hitbox/CooldownTimer.start()
 		$Hitbox/Sprite2D.visible = true
-		$Hitbox.monitoring = true
+		$Hitbox.monitorable = true
 		
 	position = position.clamp(Vector2.ZERO, screen_size)
 		
@@ -72,4 +72,4 @@ func _on_hurtbox_area_entered(area: Area2D) -> void:
 func _on_cooldown_timer_timeout() -> void:
 	attacking = false
 	$Hitbox/Sprite2D.visible = false
-	$Hitbox.monitoring = false
+	$Hitbox.monitorable = false

@@ -67,8 +67,8 @@ func _die() -> void:
 	$"../GameOver".game_over()
 
 func _on_hurtbox_area_entered(area: Area2D) -> void:
-	hit(100) #Change with actual enemy damage values
-
+	if area.is_in_group("enemy_attack"):
+		pass
 func _on_cooldown_timer_timeout() -> void:
 	attacking = false
 	$Hitbox/Sprite2D.visible = false

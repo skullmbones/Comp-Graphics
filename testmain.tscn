@@ -63,7 +63,7 @@
 [ext_resource type="Script" uid="uid://bcf7lu6hrf85n" path="res://objective.gd" id="60_fgn3h"]
 [ext_resource type="Script" uid="uid://c1ihhwi7hpvil" path="res://goal.gd" id="61_0brfu"]
 [ext_resource type="Texture2D" uid="uid://c74yi64dtyilx" path="res://Assets/youdiedscreen.png" id="62_irx12"]
-[ext_resource type="Script" path="res://hud.gd" id="63_ug6is"]
+[ext_resource type="Script" uid="uid://cv5bb3aos8vu7" path="res://hud.gd" id="63_ug6is"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ylfqa"]
 size = Vector2(30.120878, 23.699532)
@@ -177,7 +177,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("33_rql44")
 }],
-"loop": true,
+"loop": false,
 "name": &"kill",
 "speed": 10.0
 }, {
@@ -331,6 +331,7 @@ debug_color = Color(0.3866088, 0.4454574, 0.2274054, 0.41960785)
 texture_filter = 1
 scale = Vector2(1.4728231, 0.6632048)
 sprite_frames = SubResource("SpriteFrames_0tqa5")
+animation = &"kill"
 
 [node name="Hitbox" type="Area2D" parent="enemy" unique_id=1124123421]
 collision_layer = 2

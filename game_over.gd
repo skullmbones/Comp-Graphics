@@ -12,9 +12,9 @@ func game_over():
 	self.show()
 	
 func win():
+	var new_texture: Texture2D = load("res://Assets/youwinscreen.png")
 	get_tree().paused = true
-	$Label.text = "You Win"
-	$Retry.text = "Play Again"
+	$TextureRect.texture = new_texture
 	self.show()
 
 

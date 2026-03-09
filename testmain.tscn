@@ -62,6 +62,7 @@
 [ext_resource type="Script" uid="uid://ce1yc6jmq6qwy" path="res://game_over.gd" id="59_d443u"]
 [ext_resource type="Script" uid="uid://bcf7lu6hrf85n" path="res://objective.gd" id="60_fgn3h"]
 [ext_resource type="Script" uid="uid://c1ihhwi7hpvil" path="res://goal.gd" id="61_0brfu"]
+[ext_resource type="Texture2D" uid="uid://c74yi64dtyilx" path="res://Assets/youdiedscreen.png" id="62_irx12"]
 [ext_resource type="Script" path="res://hud.gd" id="63_ug6is"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ylfqa"]
@@ -325,29 +326,25 @@ script = ExtResource("59_d443u")
 offset_right = 1155.0
 offset_bottom = 645.0
 
-[node name="Label" type="Label" parent="GameOver" unique_id=206177265]
-offset_left = 28.0
-offset_top = 24.0
-offset_right = 1113.0
-offset_bottom = 297.0
-theme_override_font_sizes/font_size = 100
-text = "Game Over"
-horizontal_alignment = 1
-vertical_alignment = 1
+[node name="TextureRect" type="TextureRect" parent="GameOver" unique_id=1354183501]
+offset_left = 204.0
+offset_top = 45.0
+offset_right = 989.0
+offset_bottom = 563.0
+texture = ExtResource("62_irx12")
+stretch_mode = 4
 
 [node name="Retry" type="Button" parent="GameOver" unique_id=352240430]
-offset_left = 509.0
-offset_top = 354.0
-offset_right = 647.0
-offset_bottom = 447.0
-text = "Retry"
+offset_left = 288.0
+offset_top = 377.0
+offset_right = 545.0
+offset_bottom = 490.0
 
 [node name="Quit" type="Button" parent="GameOver" unique_id=1569496845]
-offset_left = 509.0
-offset_top = 483.0
-offset_right = 647.0
-offset_bottom = 576.0
-text = "Quit"
+offset_left = 645.0
+offset_top = 376.0
+offset_right = 906.0
+offset_bottom = 485.0
 
 [node name="Objective" type="Area2D" parent="." unique_id=1315781418 groups=["objective"]]
 script = ExtResource("60_fgn3h")

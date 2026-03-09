@@ -1,31 +1,42 @@
-[gd_scene load_steps=2 format=3 uid="uid://dd1a3pfy1drsc"]
+[gd_scene format=3 uid="uid://dd1a3pfy1drsc"]
 
 [ext_resource type="Script" uid="uid://d0n207v0rceeb" path="res://control.gd" id="1_lti8b"]
+[ext_resource type="Texture2D" uid="uid://d1kcdltgm7qdo" path="res://Assets/playbuttonlarge.png" id="2_4hy44"]
+[ext_resource type="Texture2D" uid="uid://b4bay6uax5c58" path="res://Assets/menuscreen.png" id="2_ouk20"]
+[ext_resource type="Texture2D" uid="uid://4rmnpj8j3q4x" path="res://Assets/quitbuttonlarge.png" id="3_ytr4m"]
 
-[node name="Menu" type="Node2D"]
+[node name="Menu" type="Node2D" unique_id=927732991]
 
-[node name="Control" type="Control" parent="."]
+[node name="Control" type="Control" parent="." unique_id=1930114414]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("1_lti8b")
 
-[node name="Start" type="Button" parent="Control"]
+[node name="Start" type="TextureButton" parent="Control" unique_id=227604335]
+z_index = 1
 layout_mode = 0
-offset_left = 526.0
-offset_top = 376.0
-offset_right = 572.0
-offset_bottom = 407.0
-text = "Start"
+offset_left = 167.00002
+offset_top = 414.0
+offset_right = 679.0
+offset_bottom = 638.0
+scale = Vector2(0.52153665, 0.54851633)
+texture_normal = ExtResource("2_4hy44")
 
-[node name="Quit" type="Button" parent="Control"]
+[node name="Quit" type="TextureButton" parent="Control" unique_id=218654429]
+z_index = 1
 layout_mode = 0
-offset_left = 528.0
-offset_top = 420.0
-offset_right = 570.0
-offset_bottom = 451.0
-text = "Quit"
+offset_left = 588.00006
+offset_top = 413.99997
+offset_right = 1100.0
+offset_bottom = 638.0
+scale = Vector2(0.50952023, 0.5183723)
+texture_normal = ExtResource("3_ytr4m")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=75324867]
+position = Vector2(509, 288)
+texture = ExtResource("2_ouk20")
 
 [connection signal="pressed" from="Control/Start" to="Control" method="_on_start_pressed"]
 [connection signal="pressed" from="Control/Quit" to="Control" method="_on_quit_pressed"]

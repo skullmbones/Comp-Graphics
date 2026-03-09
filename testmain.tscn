@@ -325,26 +325,30 @@ script = ExtResource("59_d443u")
 [node name="Panel" type="Panel" parent="GameOver" unique_id=393088570]
 offset_right = 1155.0
 offset_bottom = 645.0
+scale = Vector2(0.88749367, 0.8975801)
 
 [node name="TextureRect" type="TextureRect" parent="GameOver" unique_id=1354183501]
 offset_left = 204.0
 offset_top = 45.0
 offset_right = 989.0
 offset_bottom = 563.0
+scale = Vector2(0.88749367, 0.8975801)
 texture = ExtResource("62_irx12")
 stretch_mode = 4
 
 [node name="Retry" type="Button" parent="GameOver" unique_id=352240430]
-offset_left = 288.0
-offset_top = 377.0
-offset_right = 545.0
-offset_bottom = 490.0
+offset_left = 279.99997
+offset_top = 345.00003
+offset_right = 537.0
+offset_bottom = 458.00003
+scale = Vector2(0.88749367, 0.8975801)
 
 [node name="Quit" type="Button" parent="GameOver" unique_id=1569496845]
-offset_left = 645.0
-offset_top = 376.0
-offset_right = 906.0
-offset_bottom = 485.0
+offset_left = 593.0
+offset_top = 342.00003
+offset_right = 854.0
+offset_bottom = 451.00003
+scale = Vector2(0.88749367, 0.8975801)
 
 [node name="Objective" type="Area2D" parent="." unique_id=1315781418 groups=["objective"]]
 script = ExtResource("60_fgn3h")

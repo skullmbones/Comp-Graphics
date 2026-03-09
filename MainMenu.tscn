@@ -1,0 +1,32 @@
+[gd_scene load_steps=2 format=3 uid="uid://6j5rrpbhinph"]
+
+[ext_resource type="Script" uid="uid://b5bxhpfwq0j21" path="res://button_manager.gd" id="1_i26rj"]
+
+[node name="MainMenu" type="Node2D"]
+position = Vector2(344, 280)
+
+[node name="Button Manager" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_i26rj")
+
+[node name="Start" type="Button" parent="Button Manager"]
+layout_mode = 0
+offset_left = 101.0
+offset_top = 46.0
+offset_right = 335.0
+offset_bottom = 88.0
+text = "Start"
+
+[node name="Quit" type="Button" parent="Button Manager"]
+layout_mode = 0
+offset_left = 99.0
+offset_top = 104.0
+offset_right = 336.0
+offset_bottom = 154.0
+text = "Quit"
+
+[connection signal="pressed" from="Button Manager/Start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="Button Manager/Quit" to="." method="_on_quit_pressed"]

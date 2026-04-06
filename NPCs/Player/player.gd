@@ -47,9 +47,11 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("Attack") and not attacking:
 		attacking = true
 		#attack animation
-		$Hitbox/CooldownTimer.start()
 		$Hitbox/Sprite2D.visible = true
 		$Hitbox.monitorable = true
+		$Hitbox/AttackTimer.start()
+		$Hitbox/CooldownTimer.start()
+		
 		
 	position = position.clamp(Vector2.ZERO, screen_size)
 		
@@ -69,7 +71,10 @@ func _die() -> void:
 func _on_hurtbox_area_entered(area: Area2D) -> void:
 	if area.is_in_group("enemy_attack"):
 		pass
+		
 func _on_cooldown_timer_timeout() -> void:
 	attacking = false
+
+func _on_attack_timer_timeout() -> void:
 	$Hitbox/Sprite2D.visible = false
 	$Hitbox.monitorable = false

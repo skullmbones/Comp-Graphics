@@ -247,7 +247,12 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7pjuf"]
 
 [node name="UpsideDowner" type="CharacterBody2D" unique_id=1213987661]
+collision_layer = 4
+collision_mask = 3
+floor_snap_length = 0.0
+safe_margin = 0.001
 script = ExtResource("1_buoac")
+attack_frame = 26
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=942139351]
 texture_filter = 1
@@ -257,7 +262,7 @@ sprite_frames = SubResource("SpriteFrames_6vnh3")
 animation = &"walk"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=184542906]
-position = Vector2(0, -1)
+position = Vector2(0, 1.0000002)
 scale = Vector2(1.9999993, 1.9599999)
 shape = SubResource("CapsuleShape2D_aovd8")
 
@@ -272,6 +277,8 @@ scale = Vector2(1, 1.9599999)
 target_position = Vector2(16, 0)
 
 [node name="vision" type="Area2D" parent="." unique_id=605812668]
+light_mask = 4
+visibility_layer = 3
 position = Vector2(0, -1)
 scale = Vector2(1, 1.9599999)
 

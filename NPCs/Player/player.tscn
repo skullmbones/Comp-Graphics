@@ -109,7 +109,12 @@ radius = 4.0
 height = 16.0
 
 [node name="Player" type="CharacterBody2D" unique_id=1812544709 groups=["player"]]
+collision_layer = 3
+collision_mask = 5
+floor_snap_length = 0.0
+safe_margin = 0.001
 script = ExtResource("1_onrkg")
+jump_velocity = -300
 metadata/_edit_horizontal_guides_ = [-4.0]
 metadata/_edit_group_ = true
 
@@ -121,12 +126,14 @@ sprite_frames = SubResource("SpriteFrames_onrkg")
 animation = &"sprint"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=340098153]
+light_mask = 2
+visibility_layer = 3
 scale = Vector2(1, 0.9599999)
 shape = SubResource("CapsuleShape2D_i3pqv")
 
 [node name="Hurtbox" type="Area2D" parent="." unique_id=151672772 groups=["player"]]
 collision_layer = 2
-collision_mask = 2
+collision_mask = 7
 monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox" unique_id=1148266349]

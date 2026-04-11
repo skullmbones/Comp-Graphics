@@ -232,7 +232,9 @@ func _on_vision_body_exited(body: Node) -> void:
 
 func take_damage(amount) -> void:
 	health -= amount
-	print(health)
+	$AnimatedSprite2D.modulate = Color(1, 0, 0)
+	await get_tree().create_timer(0.5).timeout
+	$AnimatedSprite2D.modulate = Color(1, 1, 1)
 
 	if health <= 0:
 		queue_free()

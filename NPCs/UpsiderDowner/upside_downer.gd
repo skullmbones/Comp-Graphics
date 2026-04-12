@@ -232,12 +232,13 @@ func _on_vision_body_exited(body: Node) -> void:
 
 func take_damage(amount) -> void:
 	health -= amount
-	print(health)
+	$AnimatedSprite2D.modulate = Color(1, 0, 0)
+	await get_tree().create_timer(0.5).timeout
+	$AnimatedSprite2D.modulate = Color(1, 1, 1)
 
 	if health <= 0:
 		queue_free()
 
-
-func _on_hitbox_area_entered(area: Area2D) -> void:
+func _on_hurtbox_area_entered(area: Area2D) -> void:
 	if area.is_in_group("player"):
 		take_damage(25)

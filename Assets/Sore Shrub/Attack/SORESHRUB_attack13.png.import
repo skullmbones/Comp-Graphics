@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://puxvqtnlxx1a"
-path="res://.godot/imported/CAVESETFINALFINAL.png-ceef7f1eb31a17447cf9f36d5fa73ab8.ctex"
+uid="uid://clb8ajixyl2qh"
+path="res://.godot/imported/SORESHRUB_attack13.png-1ec3fd4e8d9ba864d12c807743914d1a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://ldtk/tilesets/CAVESETFINALFINAL.png"
-dest_files=["res://.godot/imported/CAVESETFINALFINAL.png-ceef7f1eb31a17447cf9f36d5fa73ab8.ctex"]
+source_file="res://Assets/Sore Shrub/Attack/SORESHRUB_attack13.png"
+dest_files=["res://.godot/imported/SORESHRUB_attack13.png-1ec3fd4e8d9ba864d12c807743914d1a.ctex"]
 
 [params]
 

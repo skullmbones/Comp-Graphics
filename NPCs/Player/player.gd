@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 @export var walk_speed = 200
 @export var sprint_speed = 300
-@export var jump_velocity = -500
+@export var jump_velocity = -400
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var max_health = 100
 var health = 100
@@ -53,7 +53,6 @@ func _physics_process(delta: float) -> void:
 		$Hitbox/CooldownTimer.start()
 		
 		
-	position = position.clamp(Vector2.ZERO, screen_size)
 		
 	move_and_slide()
 	

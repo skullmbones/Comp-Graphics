@@ -251,7 +251,6 @@ size = Vector2(20.500004, 28.877554)
 collision_layer = 4
 collision_mask = 3
 floor_snap_length = 0.0
-safe_margin = 0.001
 script = ExtResource("1_buoac")
 attack_frame = 26
 

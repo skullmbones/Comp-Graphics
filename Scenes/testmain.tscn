@@ -1,25 +1,25 @@
-[gd_scene load_steps=24 format=3 uid="uid://bj3tu15svb88d"]
+[gd_scene format=3 uid="uid://bj3tu15svb88d"]
 
 [ext_resource type="Script" uid="uid://c1ihhwi7hpvil" path="res://Scripts/goal.gd" id="1_o2q7l"]
 [ext_resource type="Texture2D" uid="uid://duj6cri6cpv1w" path="res://icon.svg" id="2_34vxp"]
-[ext_resource type="PackedScene" uid="uid://cv7t8jo6w77md" path="res://ldtk/levels/Level_0.scn" id="3_yjjsb"]
+[ext_resource type="PackedScene" uid="uid://yioswovg8mg5" path="res://ldtk/levels/Level_0.scn" id="3_yjjsb"]
 [ext_resource type="PackedScene" uid="uid://c88voq5qyiykq" path="res://NPCs/Player/player.tscn" id="4_nswrt"]
 [ext_resource type="PackedScene" uid="uid://dgp4g0skpg8uy" path="res://NPCs/UpsiderDowner/UpsideDowner.tscn" id="5_mc6jq"]
 [ext_resource type="Script" uid="uid://ce1yc6jmq6qwy" path="res://Scripts/game_over.gd" id="6_wkf0h"]
 [ext_resource type="Texture2D" uid="uid://c74yi64dtyilx" path="res://Assets/youdiedscreen.png" id="7_qp7q2"]
 [ext_resource type="Script" uid="uid://bcf7lu6hrf85n" path="res://Scripts/objective.gd" id="8_favem"]
 [ext_resource type="Script" uid="uid://cv5bb3aos8vu7" path="res://Scripts/hud.gd" id="9_xcyxi"]
-[ext_resource type="PackedScene" uid="uid://bai8rq6dq65ee" path="res://ldtk/levels/Level_10.scn" id="10_r3an8"]
-[ext_resource type="PackedScene" uid="uid://cudbab8swjtxc" path="res://ldtk/levels/Level_1.scn" id="11_visgm"]
-[ext_resource type="PackedScene" uid="uid://dhlr0w8cqwrab" path="res://ldtk/levels/Level_2.scn" id="12_erf2k"]
-[ext_resource type="PackedScene" uid="uid://046vc8c5brd2" path="res://ldtk/levels/Level_3.scn" id="13_b4cjy"]
-[ext_resource type="PackedScene" uid="uid://br2wxvpfuolck" path="res://ldtk/levels/Level_4.scn" id="14_6bedj"]
-[ext_resource type="PackedScene" uid="uid://deeit2rdndrqa" path="res://ldtk/levels/Level_5.scn" id="15_01dj5"]
-[ext_resource type="PackedScene" uid="uid://cm5pl3ncs05nf" path="res://ldtk/levels/Level_6.scn" id="16_83epy"]
-[ext_resource type="PackedScene" uid="uid://ckk58rkmyamrk" path="res://ldtk/levels/Level_11.scn" id="17_2kvep"]
-[ext_resource type="PackedScene" uid="uid://b2y5hb4w1ryi5" path="res://ldtk/levels/Level_7.scn" id="18_sxgro"]
-[ext_resource type="PackedScene" uid="uid://ctfaspyw1fx0h" path="res://ldtk/levels/Level_8.scn" id="19_2gms3"]
-[ext_resource type="PackedScene" uid="uid://23mer7shsh6g" path="res://ldtk/levels/Level_9.scn" id="20_3tk2o"]
+[ext_resource type="PackedScene" uid="uid://bmc8wybi47cbo" path="res://ldtk/levels/Level_10.scn" id="10_r3an8"]
+[ext_resource type="PackedScene" uid="uid://bgm7rc5ihg5f3" path="res://ldtk/levels/Level_1.scn" id="11_visgm"]
+[ext_resource type="PackedScene" uid="uid://c2f6yl6yhxwh2" path="res://ldtk/levels/Level_2.scn" id="12_erf2k"]
+[ext_resource type="PackedScene" uid="uid://dpm07qaaf7mrm" path="res://ldtk/levels/Level_3.scn" id="13_b4cjy"]
+[ext_resource type="PackedScene" uid="uid://byoi6oj1wexfe" path="res://ldtk/levels/Level_4.scn" id="14_6bedj"]
+[ext_resource type="PackedScene" uid="uid://cwwbnex6q3tqy" path="res://ldtk/levels/Level_5.scn" id="15_01dj5"]
+[ext_resource type="PackedScene" uid="uid://da3upmjr401g0" path="res://ldtk/levels/Level_6.scn" id="16_83epy"]
+[ext_resource type="PackedScene" uid="uid://n1f477f1tjoj" path="res://ldtk/levels/Level_11.scn" id="17_2kvep"]
+[ext_resource type="PackedScene" uid="uid://bu5easndrmbeb" path="res://ldtk/levels/Level_7.scn" id="18_sxgro"]
+[ext_resource type="PackedScene" uid="uid://d1krdr637ful6" path="res://ldtk/levels/Level_8.scn" id="19_2gms3"]
+[ext_resource type="PackedScene" uid="uid://d1j0ulanqs52g" path="res://ldtk/levels/Level_9.scn" id="20_3tk2o"]
 
 [sub_resource type="GDScript" id="GDScript_o2q7l"]
 script/source = "extends Node2D
@@ -42,127 +42,128 @@ size = Vector2(30.120878, 23.699532)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0brfu"]
 size = Vector2(128.02515, 126.87622)
 
-[node name="Node2D" type="Node2D" groups=["player"]]
+[node name="Node2D" type="Node2D" unique_id=404480530 groups=["player"]]
 position = Vector2(72.00003, 192)
 scale = Vector2(1.3418899, 3.0657997)
 script = SubResource("GDScript_o2q7l")
 
-[node name="Goal" type="Area2D" parent="."]
+[node name="Goal" type="Area2D" parent="." unique_id=1234784176]
 position = Vector2(5061.5176, 146.1283)
 script = ExtResource("1_o2q7l")
 
-[node name="Sprite2D" type="Sprite2D" parent="Goal"]
+[node name="Sprite2D" type="Sprite2D" parent="Goal" unique_id=966609253]
 position = Vector2(-5003.063, -130.04674)
 scale = Vector2(0.26129743, 0.2105018)
 texture = ExtResource("2_34vxp")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Goal"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Goal" unique_id=1687618095]
 position = Vector2(-5003.0635, -130.04674)
 shape = SubResource("RectangleShape2D_ylfqa")
 
-[node name="Level Collisions" type="StaticBody2D" parent="."]
+[node name="Level Collisions" type="StaticBody2D" parent="." unique_id=1826140447]
 position = Vector2(5061.5176, 146.1283)
 scale = Vector2(1.6762155, 0.81805205)
 disable_mode = 2
 
-[node name="Level_9" type="CollisionPolygon2D" parent="Level Collisions"]
+[node name="Level_9" type="CollisionPolygon2D" parent="Level Collisions" unique_id=866867932]
 position = Vector2(-3055.1768, -258.37494)
 scale = Vector2(1.0000001, 1.0000001)
-polygon = PackedVector2Array(3.5566676, 258.37494, 512.1601, 258.37494, 512.1601, 114.83331, 49.793346, 114.83331, 49.793346, 82.93517, 35.566677, 82.93517, 35.566677, 3.189838, 3.5566406, 3.1898193)
+polygon = PackedVector2Array(3.5566676, 258.37494, 512.1601, 258.37494, 512.16003, 114.43455, 50.682507, 114.43455, 50.682507, 82.536415, 35.56667, 82.536415, 35.566677, 3.189838, 3.5566406, 3.1898193)
 
-[node name="Level_8" type="CollisionPolygon2D" parent="Level Collisions"]
+[node name="Level_8" type="CollisionPolygon2D" parent="Level Collisions" unique_id=621081984]
 position = Vector2(-2535.9038, -267.94437)
 scale = Vector2(1.0000001, 1.0000001)
-polygon = PackedVector2Array(-7.1133423, 267.94434, 501.4901, 267.94434, 501.4901, 156.30087, 469.4801, 156.30087, 469.4801, 172.24994, 373.45007, 172.24994, 373.45007, 156.30087, 245.41003, 156.30087, 245.41003, 140.3518, 152.9367, 140.3518, 152.9367, 124.40273, -7.1133423, 124.40273)
+polygon = PackedVector2Array(-7.1133423, 267.94434, 501.4901, 267.94434, 501.49048, 155.90211, 469.92505, 155.90211, 469.92505, 171.85118, 374.33966, 171.85118, 374.33966, 155.90211, 247.18878, 155.90211, 247.18878, 139.95305, 152.04791, 139.95305, 152.04791, 124.00399, -7.112915, 124.00399)
 
-[node name="Level_7" type="CollisionPolygon2D" parent="Level Collisions"]
+[node name="Level_7" type="CollisionPolygon2D" parent="Level Collisions" unique_id=508280881]
 position = Vector2(-2027.2999, -267.94437)
 scale = Vector2(1.0000001, 1.0000001)
-polygon = PackedVector2Array(-7.1133423, 267.94434, 501.4901, 267.94434, 501.4901, 172.24994, 455.25342, 172.24994, 455.25342, 188.199, 391.2334, 188.199, 391.2334, 204.14807, 231.18335, 204.14807, 231.18335, 188.199, 184.94666, 188.199, 184.94666, 172.24994, 152.93665, 172.24994, 152.93665, 156.30087, 88.916626, 156.30087, 88.916626, 140.3518, 10.669922, 140.3518, 10.669922, 156.30087, -7.1134033, 156.30087)
+polygon = PackedVector2Array(-7.1133423, 267.94434, 501.4901, 267.94434, 501.4901, 171.85118, 454.36426, 171.85118, 454.36426, 187.80025, 390.78882, 187.80025, 390.78882, 203.74931, 231.18347, 203.74931, 231.18347, 187.80025, 183.61304, 187.80025, 184.05762, 171.85118, 152.0476, 171.85118, 152.0476, 155.90211, 88.47217, 155.90211, 88.47217, 139.95305, 8.891724, 139.95305, 8.891724, 155.90211, -7.1132813, 155.90211)
 
-[node name="Level_11" type="CollisionPolygon2D" parent="Level Collisions"]
+[node name="Level_11" type="CollisionPolygon2D" parent="Level Collisions" unique_id=1681392879]
 position = Vector2(-1522.2532, -267.94437)
 scale = Vector2(1.0000001, 1.0000001)
-polygon = PackedVector2Array(-7.1133423, 267.94434, 508.6034, 267.94434, 508.6034, 172.24994, 490.82007, 172.24994, 490.82007, 156.30087, 458.81006, 156.30087, 458.81006, 140.3518, 409.01672, 140.3518, 409.01672, 124.40273, 362.78003, 124.40273, 362.78003, 108.45367, 284.53333, 108.45367, 284.53333, 124.40273, 266.75, 124.40273, 266.75, 108.45367, 234.73999, 108.45367, 234.73999, 124.40273, 170.71997, 124.40273, 170.71997, 140.3518, 92.47327, 140.3518, 92.47327, 147.34206, 92.47327, 156.30087, 60.463257, 156.30087, 60.463257, 172.24994, -7.1134033, 172.24994)
+polygon = PackedVector2Array(-7.1133423, 267.94434, 508.6034, 267.94434, 508.6034, 171.85118, 489.48633, 171.85118, 489.48633, 155.90211, 457.9209, 155.90211, 457.9209, 139.95305, 409.90588, 139.95305, 409.90588, 124.00399, 362.33545, 124.00399, 362.33545, 108.054924, 283.1996, 108.054924, 283.1996, 124.00399, 266.75, 124.00399, 266.75, 108.054924, 235.1847, 108.054924, 235.1847, 124.00399, 171.60925, 124.00399, 171.60925, 139.95305, 92.02881, 139.95305, 92.02881, 147.52885, 92.02881, 155.90211, 60.0188, 155.90211, 60.0188, 171.85118, -7.1132813, 171.85118)
 
-[node name="Level_6" type="CollisionPolygon2D" parent="Level Collisions"]
+[node name="Level_6" type="CollisionPolygon2D" parent="Level Collisions" unique_id=444086940]
 position = Vector2(-1013.64954, -267.9444)
 scale = Vector2(1.0000001, 1.0000001)
-polygon = PackedVector2Array(-7.1133423, 267.94434, 519.27356, 267.94434, 519.27356, 251.99527, 473.03674, 251.99527, 473.03674, 236.0462, 441.02673, 236.0462, 441.02673, 220.09714, 394.79016, 220.09714, 394.79016, 204.14807, 344.9967, 204.14807, 344.9967, 188.199, 42.680054, 188.199, 42.680054, 172.24994, -7.1134033, 172.24994)
+polygon = PackedVector2Array(-7.1133423, 267.94434, 521.0515, 267.94434, 521.0515, 251.19781, 473.92578, 251.19781, 473.92578, 235.24875, 441.91577, 235.24875, 441.91577, 219.69841, 394.3452, 219.69841, 394.3452, 203.74934, 346.33032, 203.74934, 346.33032, 187.80028, 44.013428, 187.80028, 44.013428, 171.85121, -7.1135254, 171.85121)
 
-[node name="Level_5" type="CollisionPolygon2D" parent="Level Collisions"]
+[node name="Level_5" type="CollisionPolygon2D" parent="Level Collisions" unique_id=1890887797]
 position = Vector2(-373.44946, -267.9444)
 scale = Vector2(1.0000001, 1.0000001)
 polygon = PackedVector2Array(-7.1133423, 267.94434, 373.4502, 267.94434, 373.4502, 12.759254, 71.133545, 12.759254, 71.133545, 28.708323, 56.90674, 28.708323, 56.90674, 60.60646, 39.123535, 60.60646, 39.123535, 124.40273, 24.896729, 124.40273, 24.896729, 188.199, 7.1135254, 188.199, 7.1135254, 236.0462, -7.1132813, 236.0462)
 
-[node name="Level_4-Top" type="CollisionPolygon2D" parent="Level Collisions"]
+[node name="Level_4-Top" type="CollisionPolygon2D" parent="Level Collisions" unique_id=1994747055]
 position = Vector2(-384.12012, -3.189838)
 polygon = PackedVector2Array(3.5566406, 19.138885, 17.783447, 19.138885, 17.783447, 35.08795, 35.56665, 35.08795, 35.56665, 51.037018, 67.57666, 51.037018, 67.57666, 66.986084, 131.59668, 66.986084, 131.59668, 82.93515, 227.62671, 82.93515, 227.62671, 98.88422, 384.12012, 98.88422, 384.12012, 3.1898193, 17.783447, 3.1898193, 3.5566406, 3.1898193)
 
-[node name="Level_4-Bottom" type="CollisionPolygon2D" parent="Level Collisions"]
+[node name="Level_4-Bottom" type="CollisionPolygon2D" parent="Level Collisions" unique_id=2081018412]
 position = Vector2(-512.1599, -3.189804)
 scale = Vector2(1.0000001, 1.0000001)
-polygon = PackedVector2Array(3.5566406, 258.3749, 512.16016, 258.3749, 512, 209, 512.16016, 178.62958, 352.1101, 178.62958, 352.1101, 162.68051, 305.87354, 162.68051, 163.60669, 162.68051, 163.60669, 146.73145, 145.82349, 146.73145, 145.82349, 130.78238, 131.59668, 130.78238, 131.59668, 114.83328, 99.58667, 114.83328, 99.58667, 98.88422, 81.80347, 98.88422, 81.80347, 82.93515, 67.57666, 82.93515, 67.57666, 66.986084, 49.793457, 66.986084, 49.793457, 51.037018, 35.56665, 51.037018, 35.56665, 19.138885, 17.783447, 19.138885, 17.783447, 3.1898193, 3.5566406, 3.1898193)
+polygon = PackedVector2Array(3.5566406, 258.3749, 512.16016, 258.3749, 512, 209, 512.16016, 178.23076, 352.99927, 178.23076, 352.99927, 162.68044, 305.87354, 162.68051, 162.71753, 162.68044, 162.71753, 146.33263, 146.71265, 146.33263, 146.71265, 130.38356, 130.70752, 130.38356, 130.70752, 114.434494, 99.14209, 114.434494, 99.14209, 98.48543, 83.13721, 98.48543, 83.13721, 82.53636, 67.13208, 82.53636, 67.13208, 66.98604, 51.127197, 66.98604, 51.127197, 51.036972, 35.56665, 51.037018, 35.56665, 19.138885, 19.561768, 19.13884, 19.561768, 3.1897736, 3.5566406, 3.1898193)
 
-[node name="Level_0-Top" type="CollisionPolygon2D" parent="Level Collisions"]
+[node name="Level_0-Top" type="CollisionPolygon2D" parent="Level Collisions" unique_id=330004938]
 scale = Vector2(1.0000001, 1.0000001)
 polygon = PackedVector2Array(0, 0, 0, 95, 96, 95, 96, 80, 112, 80, 112, 65, 160, 65, 160, 80, 192, 80, 192, 64, 208, 64, 208, 48, 223, 48, 223, 64, 239, 64, 239, 79, 288, 79, 288, 64, 304, 64, 304, 48, 336, 48, 336, 63, 368, 64, 368, 80, 400, 80, 400, 96, 432, 96, 432, 112, 464, 112, 464, 96, 496, 96, 496, 112, 512, 112, 512, -1)
 
-[node name="Level_0-Bottom" type="CollisionPolygon2D" parent="Level Collisions"]
+[node name="Level_0-Bottom" type="CollisionPolygon2D" parent="Level Collisions" unique_id=1559791159]
 position = Vector2(0.00043416352, -3.9595136e-05)
 scale = Vector2(1.0000001, 1.0000001)
-polygon = PackedVector2Array(0, 257, 42.422607, 256.9171, 332.7976, 256.34998, 512, 256, 512.16064, 207.33784, 462.3672, 207.33784, 462.3672, 191.38878, 444.58398, 191.38878, 444.58398, 175.43971, 319, 176, 319, 160, 304, 160, 304, 144, 208, 144, 208, 160, 160, 160, 160, 176, 0, 176)
+polygon = PackedVector2Array(0, 257, 42.422607, 256.9171, 332.7976, 256.34998, 512, 256, 512.16016, 206.93912, 461.47754, 206.93912, 461.47754, 190.99005, 445.47266, 190.99005, 445.47266, 175.04099, 317.8772, 175.04099, 317.8772, 159.09192, 302.31665, 159.09192, 302.31665, 143.14285, 207.17578, 143.14285, 207.17578, 159.09192, 159.16089, 159.09192, 159.16089, 175.04099, 0, 175.04099)
 
-[node name="Level_10-Top" type="CollisionPolygon2D" parent="Level Collisions"]
+[node name="Level_10-Top" type="CollisionPolygon2D" parent="Level Collisions" unique_id=1553420753]
 position = Vector2(508.60413, -4.8672693e-05)
 scale = Vector2(1.0000001, 1.0000001)
 polygon = PackedVector2Array(0, 0, 0, 111.64346, 46.236572, 111.64346, 46.236572, 95.6944, 64.02002, 95.6944, 64.02002, 79.74533, 96, 80, 96.03003, 63.796265, 142.2666, 63.796265, 142.2666, 47.8472, 208, 48, 206.28662, 31.898132, 384.11987, 31.898132, 384.11987, 47.8472, 416.12988, 47.8472, 416.12988, 79.74533, 444.58325, 79.74533, 444.58325, 95.6944, 476.59326, 95.6944, 476.59326, 111.64346, 508.60327, 111.64346, 508.60327, 0)
 
-[node name="Level_10-Bottom" type="CollisionPolygon2D" parent="Level Collisions"]
+[node name="Level_10-Bottom" type="CollisionPolygon2D" parent="Level Collisions" unique_id=73925339]
 position = Vector2(508.60425, -3.189865)
 scale = Vector2(1.0000001, 1.0000001)
 polygon = PackedVector2Array(0, 257, 42.422607, 256.9171, 508.60327, 258.37488, 508.60327, 210.52768, 462.3667, 210.52768, 462.3667, 194.57861, 430.3567, 194.57861, 430.3567, 178.62955, 412.57324, 178.62955, 412.57324, 162.68048, 398.34668, 162.68048, 398.34668, 146.73141, 380.56323, 146.73141, 380.56323, 130.78235, 366.33667, 130.78235, 366.33667, 114.83328, 270.30664, 114.83328, 270.30664, 130.78235, 238.29663, 130.78235, 238.29663, 146.73141, 128.04004, 146.73141, 128.04004, 162.68048, 110.25659, 162.68048, 110.25659, 178.62955, 78.24658, 178.62955, 78.24658, 194.57861, 64.02002, 194.57861, 64.02002, 210.52768, 0, 210.52768)
 
-[node name="Level_1-Top" type="CollisionPolygon2D" parent="Level Collisions"]
+[node name="Level_1-Top" type="CollisionPolygon2D" parent="Level Collisions" unique_id=99614735]
 position = Vector2(1017.2076, -4.8672693e-05)
 scale = Vector2(1.0000001, 1.0000001)
 polygon = PackedVector2Array(0, 0, 0, 111.64346, 32.010254, 111.64346, 32.010254, 95.6944, 46.236816, 95.6944, 46.236816, 79.74533, 64.02002, 79.74533, 64.02002, 63.796265, 78.24658, 63.796265, 78.24658, 47.8472, 174.27686, 47.8472, 174.27686, 63.796265, 192.06006, 63.796265, 192.06006, 79.74533, 206.28662, 79.74533, 206.28662, 95.6944, 224.07031, 95.6944, 224.07031, 111.64346, 238.29688, 111.64346, 238.29688, 127.59253, 302.3169, 127.59253, 302.3169, 111.64346, 334.32666, 111.64346, 334.32666, 105.263824, 341.43994, 98.884186, 366.3369, 98.884186, 366.3369, 95.6944, 334.32666, 95.6944, 334.32666, 63.796265, 348.55322, 63.796265, 348.55322, 41.46756, 355.667, 35.08795, 380.56348, 35.08795, 380.56348, 31.898132, 348.55322, 31.898132, 348.55322, 0)
 
-[node name="Level_1-Bottom" type="CollisionPolygon2D" parent="Level Collisions"]
+[node name="Level_1-Bottom" type="CollisionPolygon2D" parent="Level Collisions" unique_id=1937448072]
 position = Vector2(1017.2075, -3.189865)
 scale = Vector2(1.0000001, 1.0000001)
 polygon = PackedVector2Array(0, 257, 42.422607, 256.9171, 508.60327, 258.37488, 508.60327, 210.52768, 508.60352, 3.1898193, 430.35693, 3.1898193, 430.35693, 6.3796387, 455.25342, 6.3796387, 462.3667, 12.759247, 462.3667, 66.986084, 398.34668, 66.986084, 398.34668, 70.17587, 423.24365, 70.17587, 430.35693, 76.55551, 430.35693, 130.78235, 384.12012, 130.78235, 384.12012, 133.97214, 409.0166, 133.97214, 412.57324, 140.35178, 412.57324, 162.68048, 352.10986, 162.68048, 352.10986, 178.62955, 320.1001, 178.62955, 320.1001, 194.57861, 288.09033, 194.57861, 288.09033, 210.52768, 160.0503, 210.52768, 160.0503, 194.57861, 142.2666, 194.57861, 142.2666, 178.62955, 110.25659, 178.62955, 78.24658, 178.62955, 78.24658, 194.57861, 64.02002, 194.57861, 64.02002, 210.52768, 0, 210.52768)
 
-[node name="Level_2" type="CollisionPolygon2D" parent="Level Collisions"]
+[node name="Level_2" type="CollisionPolygon2D" parent="Level Collisions" unique_id=1281109940]
 position = Vector2(1024.3209, -267.94434)
 scale = Vector2(1.0000001, 1.0000001)
 polygon = PackedVector2Array(-7.1133423, 267.94434, 341.43994, 267.94427, 341.43994, 251.9952, 309.43018, 251.9952, 309.43018, 236.04613, 295.2036, 236.04613, 295.2036, 220.09706, 277.41992, 220.09706, 277.41992, 188.19893, 263.19336, 188.19893, 263.19336, 124.402664, 245.41016, 124.402664, 245.41016, 28.708271, 231.1836, 28.708271, 231.1836, 12.759204, -7.1132813, 12.759204)
 
-[node name="Level_3" type="CollisionPolygon2D" parent="Level Collisions"]
+[node name="Level_3" type="CollisionPolygon2D" parent="Level Collisions" unique_id=508529840]
 position = Vector2(1532.9243, -267.9444)
 scale = Vector2(1.0000001, 1.0000001)
 polygon = PackedVector2Array(-53.350098, 267.94434, 501.49023, 267.94434, 501.49023, 188.199, 359.22314, 188.199, 359.22314, 204.14807, 270.30664, 204.14807, 167.16357, 204.14807, 167.16357, 220.09714, 120.92676, 220.09714, 120.92676, 236.0462, 24.896484, 236.0462, 24.896484, 251.99527, -53.350098, 251.99527)
 
-[node name="Player" parent="." instance=ExtResource("4_nswrt")]
+[node name="Player" parent="." unique_id=1454546572 instance=ExtResource("4_nswrt")]
 position = Vector2(238.46674, 20.87543)
 scale = Vector2(2.0702717, 0.8324727)
 disable_mode = 2
 
-[node name="UpsideDowner" parent="." instance=ExtResource("5_mc6jq")]
+[node name="UpsideDowner" parent="." unique_id=325367563 instance=ExtResource("5_mc6jq")]
 position = Vector2(5712.8374, 273.33813)
 scale = Vector2(1, 0.51809114)
 
-[node name="GameOver" type="CanvasLayer" parent="."]
+[node name="GameOver" type="CanvasLayer" parent="." unique_id=1033699607]
 process_mode = 3
+visible = false
 script = ExtResource("6_wkf0h")
 
-[node name="Panel" type="Panel" parent="GameOver"]
+[node name="Panel" type="Panel" parent="GameOver" unique_id=76442161]
 offset_top = 6.055832e-05
 offset_right = 1155.0
 offset_bottom = 645.00006
 scale = Vector2(0.88749367, 0.8975801)
 
-[node name="TextureRect" type="TextureRect" parent="GameOver"]
+[node name="TextureRect" type="TextureRect" parent="GameOver" unique_id=269353446]
 offset_left = 204.0
 offset_top = 45.00006
 offset_right = 989.0
@@ -171,61 +172,61 @@ scale = Vector2(0.88749367, 0.8975801)
 texture = ExtResource("7_qp7q2")
 stretch_mode = 4
 
-[node name="Retry" type="Button" parent="GameOver"]
+[node name="Retry" type="Button" parent="GameOver" unique_id=1665401658]
 offset_left = 280.0
 offset_top = 345.00006
 offset_right = 537.0
 offset_bottom = 458.00006
 scale = Vector2(0.88749367, 0.8975801)
 
-[node name="Quit" type="Button" parent="GameOver"]
+[node name="Quit" type="Button" parent="GameOver" unique_id=361470019]
 offset_left = 593.0
 offset_top = 342.00006
 offset_right = 854.0
 offset_bottom = 451.00006
 scale = Vector2(0.88749367, 0.8975801)
 
-[node name="Objective" type="Area2D" parent="." groups=["objective"]]
+[node name="Objective" type="Area2D" parent="." unique_id=348175446 groups=["objective"]]
 position = Vector2(5061.5176, 146.1283)
 script = ExtResource("8_favem")
 
-[node name="Sprite2D" type="Sprite2D" parent="Objective"]
+[node name="Sprite2D" type="Sprite2D" parent="Objective" unique_id=560438443]
 position = Vector2(824.2109, 134.05963)
 scale = Vector2(0.14552242, 0.061700284)
 texture = ExtResource("2_34vxp")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Objective"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Objective" unique_id=423388974]
 position = Vector2(824.5834, 134.05965)
 scale = Vector2(0.14552246, 0.06170029)
 shape = SubResource("RectangleShape2D_0brfu")
 
-[node name="HUD" type="CanvasLayer" parent="." groups=["hud"]]
+[node name="HUD" type="CanvasLayer" parent="." unique_id=2098946596 groups=["hud"]]
 script = ExtResource("9_xcyxi")
 
-[node name="LeftMargin" type="MarginContainer" parent="HUD"]
+[node name="LeftMargin" type="MarginContainer" parent="HUD" unique_id=444399473]
 offset_right = 200.0
 offset_bottom = 90.0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="HUD/LeftMargin"]
+[node name="VBoxContainer" type="VBoxContainer" parent="HUD/LeftMargin" unique_id=33049430]
 layout_mode = 2
 theme_override_constants/separation = 12
 
-[node name="HP" type="Label" parent="HUD/LeftMargin/VBoxContainer"]
+[node name="HP" type="Label" parent="HUD/LeftMargin/VBoxContainer" unique_id=1459051359]
 layout_mode = 2
 text = "HP:"
 
-[node name="HPBar" type="ProgressBar" parent="HUD/LeftMargin/VBoxContainer"]
+[node name="HPBar" type="ProgressBar" parent="HUD/LeftMargin/VBoxContainer" unique_id=517901973]
 custom_minimum_size = Vector2(200, 20)
 layout_mode = 2
 max_value = 10.0
 value = 10.0
 show_percentage = false
 
-[node name="KeyLabel" type="Label" parent="HUD/LeftMargin/VBoxContainer"]
+[node name="KeyLabel" type="Label" parent="HUD/LeftMargin/VBoxContainer" unique_id=1593753501]
 layout_mode = 2
 text = "Keys: 0"
 
-[node name="TimerLabel" type="Label" parent="HUD"]
+[node name="TimerLabel" type="Label" parent="HUD" unique_id=1768838710]
 custom_minimum_size = Vector2(-20, 20)
 offset_left = 960.0
 offset_top = 24.0
@@ -234,51 +235,51 @@ offset_bottom = 50.0
 text = "Time: 0"
 horizontal_alignment = 2
 
-[node name="Level_0" parent="." instance=ExtResource("3_yjjsb")]
+[node name="Level_0" parent="." unique_id=397858530 instance=ExtResource("3_yjjsb")]
 position = Vector2(5061.518, 146.12823)
 scale = Vector2(1.667, 0.813)
 
-[node name="Level_10" parent="." instance=ExtResource("10_r3an8")]
+[node name="Level_10" parent="." unique_id=336817216 instance=ExtResource("10_r3an8")]
 position = Vector2(5914.047, 146.1283)
 scale = Vector2(1.667, 0.813)
 
-[node name="Level_1" parent="." instance=ExtResource("11_visgm")]
+[node name="Level_1" parent="." unique_id=430161445 instance=ExtResource("11_visgm")]
 position = Vector2(6766.576, 146.1283)
 scale = Vector2(1.667, 0.813)
 
-[node name="Level_2" parent="." instance=ExtResource("12_erf2k")]
+[node name="Level_2" parent="." unique_id=348641919 instance=ExtResource("12_erf2k")]
 position = Vector2(6766.576, -62.6264)
 scale = Vector2(1.667, 0.813)
 
-[node name="Level_3" parent="." instance=ExtResource("13_b4cjy")]
+[node name="Level_3" parent="." unique_id=921042048 instance=ExtResource("13_b4cjy")]
 position = Vector2(7619.105, -62.6264)
 scale = Vector2(1.667, 0.813)
 
-[node name="Level_4" parent="." instance=ExtResource("14_6bedj")]
+[node name="Level_4" parent="." unique_id=140248459 instance=ExtResource("14_6bedj")]
 position = Vector2(4208.9893, 146.12823)
 scale = Vector2(1.667, 0.813)
 
-[node name="Level_5" parent="." instance=ExtResource("15_01dj5")]
+[node name="Level_5" parent="." unique_id=287756165 instance=ExtResource("15_01dj5")]
 position = Vector2(4208.989, -62.6264)
 scale = Vector2(1.667, 0.813)
 
-[node name="Level_6" parent="." instance=ExtResource("16_83epy")]
+[node name="Level_6" parent="." unique_id=897079306 instance=ExtResource("16_83epy")]
 position = Vector2(3356.4602, -62.6264)
 scale = Vector2(1.667, 0.813)
 
-[node name="Level_11" parent="." instance=ExtResource("17_2kvep")]
+[node name="Level_11" parent="." unique_id=1850905460 instance=ExtResource("17_2kvep")]
 position = Vector2(2503.9314, -62.6264)
 scale = Vector2(1.667, 0.813)
 
-[node name="Level_7" parent="." instance=ExtResource("18_sxgro")]
+[node name="Level_7" parent="." unique_id=1657807052 instance=ExtResource("18_sxgro")]
 position = Vector2(1651.4016, -62.6264)
 scale = Vector2(1.667, 0.813)
 
-[node name="Level_8" parent="." instance=ExtResource("19_2gms3")]
+[node name="Level_8" parent="." unique_id=1248728142 instance=ExtResource("19_2gms3")]
 position = Vector2(798.87335, -62.6264)
 scale = Vector2(1.667, 0.813)
 
-[node name="Level_9" parent="." instance=ExtResource("20_3tk2o")]
+[node name="Level_9" parent="." unique_id=2013210881 instance=ExtResource("20_3tk2o")]
 position = Vector2(-53.655693, -62.6264)
 scale = Vector2(1.667, 0.813)
 

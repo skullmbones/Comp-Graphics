@@ -48,7 +48,7 @@ scale = Vector2(1.3418899, 3.0657997)
 script = SubResource("GDScript_o2q7l")
 
 [node name="Goal" type="Area2D" parent="."]
-position = Vector2(5073.4404, 146.1283)
+position = Vector2(5061.5176, 146.1283)
 script = ExtResource("1_o2q7l")
 
 [node name="Sprite2D" type="Sprite2D" parent="Goal"]
@@ -61,29 +61,29 @@ position = Vector2(-5003.0635, -130.04674)
 shape = SubResource("RectangleShape2D_ylfqa")
 
 [node name="Level Collisions" type="StaticBody2D" parent="."]
-position = Vector2(5073.4404, 146.1283)
+position = Vector2(5061.5176, 146.1283)
 scale = Vector2(1.6762155, 0.81805205)
 disable_mode = 2
 
 [node name="Level_9" type="CollisionPolygon2D" parent="Level Collisions"]
-position = Vector2(-3062.2908, -258.37494)
+position = Vector2(-3055.1768, -258.37494)
 scale = Vector2(1.0000001, 1.0000001)
 polygon = PackedVector2Array(3.5566676, 258.37494, 512.1601, 258.37494, 512.1601, 114.83331, 49.793346, 114.83331, 49.793346, 82.93517, 35.566677, 82.93517, 35.566677, 3.189838, 3.5566406, 3.1898193)
 
 [node name="Level_8" type="CollisionPolygon2D" parent="Level Collisions"]
-position = Vector2(-2543.0166, -267.9444)
+position = Vector2(-2535.9038, -267.94437)
 scale = Vector2(1.0000001, 1.0000001)
 polygon = PackedVector2Array(-7.1133423, 267.94434, 501.4901, 267.94434, 501.4901, 156.30087, 469.4801, 156.30087, 469.4801, 172.24994, 373.45007, 172.24994, 373.45007, 156.30087, 245.41003, 156.30087, 245.41003, 140.3518, 152.9367, 140.3518, 152.9367, 124.40273, -7.1133423, 124.40273)
 
 [node name="Level_7" type="CollisionPolygon2D" parent="Level Collisions"]
-position = Vector2(-2034.4131, -267.9444)
+position = Vector2(-2027.2999, -267.94437)
 scale = Vector2(1.0000001, 1.0000001)
 polygon = PackedVector2Array(-7.1133423, 267.94434, 501.4901, 267.94434, 501.4901, 172.24994, 455.25342, 172.24994, 455.25342, 188.199, 391.2334, 188.199, 391.2334, 204.14807, 231.18335, 204.14807, 231.18335, 188.199, 184.94666, 188.199, 184.94666, 172.24994, 152.93665, 172.24994, 152.93665, 156.30087, 88.916626, 156.30087, 88.916626, 140.3518, 10.669922, 140.3518, 10.669922, 156.30087, -7.1134033, 156.30087)
 
 [node name="Level_11" type="CollisionPolygon2D" parent="Level Collisions"]
-position = Vector2(-1525.8096, -267.9444)
+position = Vector2(-1522.2532, -267.94437)
 scale = Vector2(1.0000001, 1.0000001)
-polygon = PackedVector2Array(-7.1133423, 267.94434, 508.6034, 267.94434, 508.6034, 172.24994, 490.82007, 172.24994, 490.82007, 156.30087, 458.81006, 156.30087, 458.81006, 140.3518, 409.01672, 140.3518, 409.01672, 124.40273, 362.78003, 124.40273, 362.78003, 108.45367, 284.53333, 108.45367, 284.53333, 124.40273, 266.75, 124.40273, 266.75, 108.45367, 234.73999, 108.45367, 234.73999, 124.40273, 170.71997, 124.40273, 170.71997, 140.3518, 92.47327, 140.3518, 92.47327, 156.30087, 60.463257, 156.30087, 60.463257, 172.24994, -7.1134033, 172.24994)
+polygon = PackedVector2Array(-7.1133423, 267.94434, 508.6034, 267.94434, 508.6034, 172.24994, 490.82007, 172.24994, 490.82007, 156.30087, 458.81006, 156.30087, 458.81006, 140.3518, 409.01672, 140.3518, 409.01672, 124.40273, 362.78003, 124.40273, 362.78003, 108.45367, 284.53333, 108.45367, 284.53333, 124.40273, 266.75, 124.40273, 266.75, 108.45367, 234.73999, 108.45367, 234.73999, 124.40273, 170.71997, 124.40273, 170.71997, 140.3518, 92.47327, 140.3518, 92.47327, 147.34206, 92.47327, 156.30087, 60.463257, 156.30087, 60.463257, 172.24994, -7.1134033, 172.24994)
 
 [node name="Level_6" type="CollisionPolygon2D" parent="Level Collisions"]
 position = Vector2(-1013.64954, -267.9444)
@@ -149,7 +149,7 @@ scale = Vector2(2.0702717, 0.8324727)
 disable_mode = 2
 
 [node name="UpsideDowner" parent="." instance=ExtResource("5_mc6jq")]
-position = Vector2(5724.7603, 273.33813)
+position = Vector2(5712.8374, 273.33813)
 scale = Vector2(1, 0.51809114)
 
 [node name="GameOver" type="CanvasLayer" parent="."]
@@ -187,7 +187,7 @@ offset_bottom = -1684.9998
 scale = Vector2(0.88749367, 0.8975801)
 
 [node name="Objective" type="Area2D" parent="." groups=["objective"]]
-position = Vector2(5073.4404, 146.1283)
+position = Vector2(5061.5176, 146.1283)
 script = ExtResource("8_favem")
 
 [node name="Sprite2D" type="Sprite2D" parent="Objective"]
@@ -238,39 +238,39 @@ text = "Time: 0"
 horizontal_alignment = 2
 
 [node name="Level_0" parent="." instance=ExtResource("3_yjjsb")]
-position = Vector2(5073.441, 146.12823)
+position = Vector2(5061.518, 146.12823)
 scale = Vector2(1.667, 0.813)
 
 [node name="Level_10" parent="." instance=ExtResource("10_r3an8")]
-position = Vector2(5925.9697, 146.1283)
+position = Vector2(5914.047, 146.1283)
 scale = Vector2(1.667, 0.813)
 
 [node name="Level_1" parent="." instance=ExtResource("11_visgm")]
-position = Vector2(6778.499, 146.1283)
+position = Vector2(6766.576, 146.1283)
 scale = Vector2(1.667, 0.813)
 
 [node name="Level_2" parent="." instance=ExtResource("12_erf2k")]
-position = Vector2(6778.499, -62.6264)
+position = Vector2(6766.576, -62.6264)
 scale = Vector2(1.667, 0.813)
 
 [node name="Level_3" parent="." instance=ExtResource("13_b4cjy")]
-position = Vector2(7631.028, -62.6264)
+position = Vector2(7619.105, -62.6264)
 scale = Vector2(1.667, 0.813)
 
 [node name="Level_4" parent="." instance=ExtResource("14_6bedj")]
-position = Vector2(4220.912, 146.12823)
+position = Vector2(4208.9893, 146.12823)
 scale = Vector2(1.667, 0.813)
 
 [node name="Level_5" parent="." instance=ExtResource("15_01dj5")]
-position = Vector2(4220.9116, -62.6264)
+position = Vector2(4208.989, -62.6264)
 scale = Vector2(1.667, 0.813)
 
 [node name="Level_6" parent="." instance=ExtResource("16_83epy")]
-position = Vector2(3368.3828, -62.6264)
+position = Vector2(3356.4602, -62.6264)
 scale = Vector2(1.667, 0.813)
 
 [node name="Level_11" parent="." instance=ExtResource("17_2kvep")]
-position = Vector2(2509.8916, -62.6264)
+position = Vector2(2503.9314, -62.6264)
 scale = Vector2(1.667, 0.813)
 
 [node name="Level_7" parent="." instance=ExtResource("18_sxgro")]
@@ -278,7 +278,7 @@ position = Vector2(1651.4016, -62.6264)
 scale = Vector2(1.667, 0.813)
 
 [node name="Level_8" parent="." instance=ExtResource("19_2gms3")]
-position = Vector2(798.8726, -62.6264)
+position = Vector2(798.87335, -62.6264)
 scale = Vector2(1.667, 0.813)
 
 [node name="Level_9" parent="." instance=ExtResource("20_3tk2o")]

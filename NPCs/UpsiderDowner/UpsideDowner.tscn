@@ -240,7 +240,8 @@ animations = [{
 "speed": 10.0
 }]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_aovd8"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_h5jy6"]
+size = Vector2(20.500004, 28.877554)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ytmch"]
 
@@ -262,9 +263,9 @@ sprite_frames = SubResource("SpriteFrames_6vnh3")
 animation = &"walk"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=184542906]
-position = Vector2(0, 1.0000002)
+position = Vector2(0.50000364, 1.2999983)
 scale = Vector2(1.9999993, 1.9599999)
-shape = SubResource("CapsuleShape2D_aovd8")
+shape = SubResource("RectangleShape2D_h5jy6")
 
 [node name="ground" type="RayCast2D" parent="." unique_id=456465962]
 position = Vector2(0, -1)

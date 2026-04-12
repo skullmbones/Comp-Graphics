@@ -7,10 +7,10 @@ path="res://.godot/imported/lol.ldtk-ef9ecdad6e486ee547fdf51422b53f0a.scn"
 
 [deps]
 
-files=["res://ldtk/levels/Level_0.scn", "res://.godot/imported/lol.ldtk-ef9ecdad6e486ee547fdf51422b53f0a.scn"]
+files=["res://ldtk/tilesets/tileset_16px.res", "res://ldtk/levels/Level_0.scn", "res://.godot/imported/lol.ldtk-ef9ecdad6e486ee547fdf51422b53f0a.scn"]
 
 source_file="res://ldtk/lol.ldtk"
-dest_files=["res://.godot/imported/lol.ldtk-ef9ecdad6e486ee547fdf51422b53f0a.scn", "res://ldtk/levels/Level_0.scn", "res://.godot/imported/lol.ldtk-ef9ecdad6e486ee547fdf51422b53f0a.scn"]
+dest_files=["res://.godot/imported/lol.ldtk-ef9ecdad6e486ee547fdf51422b53f0a.scn", "res://ldtk/tilesets/tileset_16px.res", "res://ldtk/levels/Level_0.scn", "res://.godot/imported/lol.ldtk-ef9ecdad6e486ee547fdf51422b53f0a.scn"]
 
 [params]
 

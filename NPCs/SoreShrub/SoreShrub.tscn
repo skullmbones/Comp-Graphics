@@ -1,5 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://bg063vlr58fhi"]
+[gd_scene format=3 uid="uid://m0fpeqd4d6x6"]
 
+[ext_resource type="Script" uid="uid://c7nw13i4kauns" path="res://NPCs/SoreShrub/sore_shrub.gd" id="1_20njc"]
 [ext_resource type="Texture2D" uid="uid://dh4cfm2amvwia" path="res://ldtk/SORESHRUB_still.png" id="1_p7iwf"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_20njc"]
@@ -8,17 +9,18 @@ size = Vector2(20, 13)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bq537"]
 size = Vector2(26, 26)
 
-[node name="CharacterBody2D" type="CharacterBody2D"]
+[node name="SoreShrub" type="CharacterBody2D" unique_id=1263358132]
+script = ExtResource("1_20njc")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=154615411]
 texture = ExtResource("1_p7iwf")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1188115073]
 position = Vector2(0, 1.5)
 shape = SubResource("RectangleShape2D_20njc")
 
-[node name="Hurtbox" type="Area2D" parent="."]
+[node name="Hurtbox" type="Area2D" parent="." unique_id=478733635]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox" unique_id=1689585859]
 shape = SubResource("RectangleShape2D_bq537")
 debug_color = Color(0.60303026, 0.5425727, 1.92523e-07, 0.41960785)

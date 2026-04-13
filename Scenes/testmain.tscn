@@ -1,7 +1,8 @@
-[gd_scene format=3 uid="uid://bj3tu15svb88d"]
+[gd_scene format=3 uid="uid://den7bm1hdwc80"]
 
 [ext_resource type="Script" uid="uid://c1ihhwi7hpvil" path="res://Scripts/goal.gd" id="1_o2q7l"]
 [ext_resource type="Texture2D" uid="uid://duj6cri6cpv1w" path="res://icon.svg" id="2_34vxp"]
+[ext_resource type="PackedScene" uid="uid://m0fpeqd4d6x6" path="res://NPCs/SoreShrub/SoreShrub.tscn" id="3_visgm"]
 [ext_resource type="PackedScene" uid="uid://yioswovg8mg5" path="res://ldtk/levels/Level_0.scn" id="3_yjjsb"]
 [ext_resource type="PackedScene" uid="uid://c88voq5qyiykq" path="res://NPCs/Player/player.tscn" id="4_nswrt"]
 [ext_resource type="PackedScene" uid="uid://dgp4g0skpg8uy" path="res://NPCs/UpsiderDowner/UpsideDowner.tscn" id="5_mc6jq"]
@@ -142,6 +143,15 @@ polygon = PackedVector2Array(-7.1133423, 267.94434, 341.43994, 267.94427, 341.43
 position = Vector2(1532.9243, -267.9444)
 scale = Vector2(1.0000001, 1.0000001)
 polygon = PackedVector2Array(-53.350098, 267.94434, 501.49023, 267.94434, 501.49023, 188.199, 359.22314, 188.199, 359.22314, 204.14807, 270.30664, 204.14807, 167.16357, 204.14807, 167.16357, 220.09714, 120.92676, 220.09714, 120.92676, 236.0462, 24.896484, 236.0462, 24.896484, 251.99527, -53.350098, 251.99527)
+
+[node name="SoreShrub1" parent="Level Collisions" unique_id=1263358132 instance=ExtResource("3_visgm")]
+position = Vector2(-959.41064, -88.51738)
+
+[node name="SoreShrub2" parent="Level Collisions" unique_id=614013952 instance=ExtResource("3_visgm")]
+position = Vector2(-1928.6025, -120.81424)
+
+[node name="SoreShrub" parent="Level Collisions" unique_id=1486673321 instance=ExtResource("3_visgm")]
+position = Vector2(-1771.6644, -72.169586)
 
 [node name="Player" parent="." unique_id=1454546572 instance=ExtResource("4_nswrt")]
 position = Vector2(238.46674, 20.87543)

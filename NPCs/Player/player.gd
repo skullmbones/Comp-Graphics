@@ -68,6 +68,7 @@ func hit(amount) -> void:
 	health -= amount
 	health = clamp(health, 0, max_health)
 	emit_signal("health_changed", health, max_health)
+	print(health)
 
 	if health <= 0:
 		_die()

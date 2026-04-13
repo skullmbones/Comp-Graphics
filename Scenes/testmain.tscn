@@ -1,17 +1,32 @@
+<<<<<<< Updated upstream
 [gd_scene format=3 uid="uid://bj3tu15svb88d"]
+=======
+[gd_scene load_steps=29 format=3 uid="uid://bj3tu15svb88d"]
+>>>>>>> Stashed changes
 
 [ext_resource type="Script" uid="uid://c1ihhwi7hpvil" path="res://Scripts/goal.gd" id="1_o2q7l"]
 [ext_resource type="Texture2D" uid="uid://duj6cri6cpv1w" path="res://icon.svg" id="2_34vxp"]
 [ext_resource type="PackedScene" uid="uid://yioswovg8mg5" path="res://ldtk/levels/Level_0.scn" id="3_yjjsb"]
 [ext_resource type="PackedScene" uid="uid://c88voq5qyiykq" path="res://NPCs/Player/player.tscn" id="4_nswrt"]
+[ext_resource type="PackedScene" uid="uid://bg063vlr58fhi" path="res://NPCs/SoreShrub/SoreShrub.tscn" id="5_6bedj"]
 [ext_resource type="PackedScene" uid="uid://dgp4g0skpg8uy" path="res://NPCs/UpsiderDowner/UpsideDowner.tscn" id="5_mc6jq"]
+[ext_resource type="Script" uid="uid://c7nw13i4kauns" path="res://NPCs/SoreShrub/sore_shrub.gd" id="6_01dj5"]
 [ext_resource type="Script" uid="uid://ce1yc6jmq6qwy" path="res://Scripts/game_over.gd" id="6_wkf0h"]
 [ext_resource type="Texture2D" uid="uid://c74yi64dtyilx" path="res://Assets/youdiedscreen.png" id="7_qp7q2"]
 [ext_resource type="Script" uid="uid://bcf7lu6hrf85n" path="res://Scripts/objective.gd" id="8_favem"]
 [ext_resource type="Script" uid="uid://cv5bb3aos8vu7" path="res://Scripts/hud.gd" id="9_xcyxi"]
+<<<<<<< Updated upstream
 [ext_resource type="PackedScene" uid="uid://bmc8wybi47cbo" path="res://ldtk/levels/Level_10.scn" id="10_r3an8"]
 [ext_resource type="PackedScene" uid="uid://bgm7rc5ihg5f3" path="res://ldtk/levels/Level_1.scn" id="11_visgm"]
 [ext_resource type="PackedScene" uid="uid://c2f6yl6yhxwh2" path="res://ldtk/levels/Level_2.scn" id="12_erf2k"]
+=======
+[ext_resource type="Texture2D" uid="uid://ctidtvmj4ih17" path="res://ldtk/keyfragment1.png" id="10_83epy"]
+[ext_resource type="PackedScene" uid="uid://bmc8wybi47cbo" path="res://ldtk/levels/Level_10.scn" id="10_r3an8"]
+[ext_resource type="Texture2D" uid="uid://0ojpahsba8yo" path="res://ldtk/keyfragment2.png" id="11_2kvep"]
+[ext_resource type="PackedScene" uid="uid://bgm7rc5ihg5f3" path="res://ldtk/levels/Level_1.scn" id="11_visgm"]
+[ext_resource type="PackedScene" uid="uid://c2f6yl6yhxwh2" path="res://ldtk/levels/Level_2.scn" id="12_erf2k"]
+[ext_resource type="Script" uid="uid://3btf2miasd05" path="res://Scripts/health.gd" id="13_01dj5"]
+>>>>>>> Stashed changes
 [ext_resource type="PackedScene" uid="uid://dpm07qaaf7mrm" path="res://ldtk/levels/Level_3.scn" id="13_b4cjy"]
 [ext_resource type="PackedScene" uid="uid://byoi6oj1wexfe" path="res://ldtk/levels/Level_4.scn" id="14_6bedj"]
 [ext_resource type="PackedScene" uid="uid://cwwbnex6q3tqy" path="res://ldtk/levels/Level_5.scn" id="15_01dj5"]
@@ -152,7 +167,26 @@ disable_mode = 2
 position = Vector2(5712.8374, 273.33813)
 scale = Vector2(1, 0.51809114)
 
+<<<<<<< Updated upstream
 [node name="GameOver" type="CanvasLayer" parent="." unique_id=1033699607]
+=======
+[node name="SoreShrub1" parent="." instance=ExtResource("5_6bedj")]
+position = Vector2(1824.2931, 49.579227)
+scale = Vector2(1.667, 0.81300014)
+script = ExtResource("6_01dj5")
+
+[node name="SoreShrub2" parent="." instance=ExtResource("5_6bedj")]
+position = Vector2(2092.571, 88.72075)
+scale = Vector2(1.667, 0.81300014)
+script = ExtResource("6_01dj5")
+
+[node name="SoreShrub3" parent="." instance=ExtResource("5_6bedj")]
+position = Vector2(3958.5962, 88.72075)
+scale = Vector2(1.667, 0.81300014)
+script = ExtResource("6_01dj5")
+
+[node name="GameOver" type="CanvasLayer" parent="."]
+>>>>>>> Stashed changes
 process_mode = 3
 visible = false
 script = ExtResource("6_wkf0h")
@@ -163,15 +197,24 @@ offset_right = 1155.0
 offset_bottom = 645.00006
 scale = Vector2(0.88749367, 0.8975801)
 
+<<<<<<< Updated upstream
 [node name="TextureRect" type="TextureRect" parent="GameOver" unique_id=269353446]
 offset_left = 204.0
 offset_top = 45.00006
 offset_right = 989.0
 offset_bottom = 563.00006
+=======
+[node name="TextureRect" type="TextureRect" parent="GameOver"]
+offset_left = 168.0
+offset_top = 56.0
+offset_right = 953.0
+offset_bottom = 574.0
+>>>>>>> Stashed changes
 scale = Vector2(0.88749367, 0.8975801)
 texture = ExtResource("7_qp7q2")
 stretch_mode = 4
 
+<<<<<<< Updated upstream
 [node name="Retry" type="Button" parent="GameOver" unique_id=1665401658]
 offset_left = 280.0
 offset_top = 345.00006
@@ -184,12 +227,27 @@ offset_left = 593.0
 offset_top = 342.00006
 offset_right = 854.0
 offset_bottom = 451.00006
+=======
+[node name="Retry" type="Button" parent="GameOver"]
+offset_left = 244.0
+offset_top = 356.0
+offset_right = 501.0
+offset_bottom = 469.0
+scale = Vector2(0.88749367, 0.8975801)
+
+[node name="Quit" type="Button" parent="GameOver"]
+offset_left = 557.0
+offset_top = 353.0
+offset_right = 818.0
+offset_bottom = 462.0
+>>>>>>> Stashed changes
 scale = Vector2(0.88749367, 0.8975801)
 
 [node name="Objective" type="Area2D" parent="." unique_id=348175446 groups=["objective"]]
 position = Vector2(5061.5176, 146.1283)
 script = ExtResource("8_favem")
 
+<<<<<<< Updated upstream
 [node name="Sprite2D" type="Sprite2D" parent="Objective" unique_id=560438443]
 position = Vector2(824.2109, 134.05963)
 scale = Vector2(0.14552242, 0.061700284)
@@ -197,6 +255,25 @@ texture = ExtResource("2_34vxp")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Objective" unique_id=423388974]
 position = Vector2(824.5834, 134.05965)
+=======
+[node name="Key1" type="Sprite2D" parent="Objective"]
+position = Vector2(-1260.5366, -92.60026)
+scale = Vector2(0.14552242, 0.06170029)
+texture = ExtResource("10_83epy")
+
+[node name="Key1Collision" type="CollisionShape2D" parent="Objective"]
+position = Vector2(-1260.1646, -92.600235)
+scale = Vector2(0.14552246, 0.06170029)
+shape = SubResource("RectangleShape2D_0brfu")
+
+[node name="Key2" type="Sprite2D" parent="Objective"]
+position = Vector2(1350.706, 69.18459)
+scale = Vector2(0.14552242, 0.061700284)
+texture = ExtResource("11_2kvep")
+
+[node name="Key2Collision" type="CollisionShape2D" parent="Objective"]
+position = Vector2(1351.0786, 69.18461)
+>>>>>>> Stashed changes
 scale = Vector2(0.14552246, 0.06170029)
 shape = SubResource("RectangleShape2D_0brfu")
 
@@ -221,6 +298,8 @@ layout_mode = 2
 max_value = 10.0
 value = 10.0
 show_percentage = false
+script = ExtResource("13_01dj5")
+player_path = NodePath("../../../../Player")
 
 [node name="KeyLabel" type="Label" parent="HUD/LeftMargin/VBoxContainer" unique_id=1593753501]
 layout_mode = 2
@@ -235,9 +314,25 @@ offset_bottom = 50.0
 text = "Time: 0"
 horizontal_alignment = 2
 
+<<<<<<< Updated upstream
 [node name="Level_0" parent="." unique_id=397858530 instance=ExtResource("3_yjjsb")]
 position = Vector2(5061.518, 146.12823)
 scale = Vector2(1.667, 0.813)
+=======
+[node name="Level_0" parent="." instance=ExtResource("3_yjjsb")]
+position = Vector2(5061.5186, 146.12823)
+scale = Vector2(1.667, 0.8130001)
+neighbours = [{
+"dir": "w",
+"levelIid": "b73e6bb0-21a0-11f1-9596-751ac23708b1"
+}, {
+"dir": "nw",
+"levelIid": "76099f80-21a0-11f1-9596-232582f04521"
+}, {
+"dir": "e",
+"levelIid": "4243c190-21a0-11f1-9243-e9e2a17ea75c"
+}]
+>>>>>>> Stashed changes
 
 [node name="Level_10" parent="." unique_id=336817216 instance=ExtResource("10_r3an8")]
 position = Vector2(5914.047, 146.1283)

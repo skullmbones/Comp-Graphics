@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://bg063vlr58fhi"]
+
+[ext_resource type="Texture2D" uid="uid://dh4cfm2amvwia" path="res://ldtk/SORESHRUB_still.png" id="1_p7iwf"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_20njc"]
+size = Vector2(20, 13)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bq537"]
+size = Vector2(26, 26)
+
+[node name="CharacterBody2D" type="CharacterBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_p7iwf")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 1.5)
+shape = SubResource("RectangleShape2D_20njc")
+
+[node name="Hurtbox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+shape = SubResource("RectangleShape2D_bq537")
+debug_color = Color(0.60303026, 0.5425727, 1.92523e-07, 0.41960785)

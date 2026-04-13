@@ -1,5 +1,7 @@
 extends CharacterBody2D
 
+signal health_changed(current_health, max_health)
+
 @export var walk_speed = 200
 @export var sprint_speed = 300
 @export var jump_velocity = -400
@@ -12,6 +14,12 @@ var attacking = false
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	screen_size = get_viewport_rect().size
+	add_to_group("player")
+	$Hitbox.add_to_group("player_attack")
+	$Hitbox.monitoring = true
+	$Hitbox.monitorable = true
+	$Hitbox/CollisionShape2D.set_deferred("disabled", true)
+	emit_signal("health_changed", health, max_health)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -48,7 +56,7 @@ func _physics_process(delta: float) -> void:
 		attacking = true
 		#attack animation
 		$Hitbox/Sprite2D.visible = true
-		$Hitbox.monitorable = true
+		$Hitbox/CollisionShape2D.set_deferred("disabled", false)
 		$Hitbox/AttackTimer.start()
 		$Hitbox/CooldownTimer.start()
 		
@@ -59,6 +67,8 @@ func _physics_process(delta: float) -> void:
 func hit(amount) -> void:
 	health -= amount
 	health = clamp(health, 0, max_health)
+	emit_signal("health_changed", health, max_health)
+
 	if health <= 0:
 		_die()
 	
@@ -76,4 +86,6 @@ func _on_cooldown_timer_timeout() -> void:
 
 func _on_attack_timer_timeout() -> void:
 	$Hitbox/Sprite2D.visible = false
-	$Hitbox.monitorable = false
+	$Hitbox/CollisionShape2D.set_deferred("disabled", true)
+	
+	

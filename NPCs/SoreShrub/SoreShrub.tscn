@@ -9,7 +9,9 @@ size = Vector2(20, 13)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bq537"]
 size = Vector2(26, 26)
 
-[node name="SoreShrub" type="CharacterBody2D" unique_id=1263358132]
+[node name="SoreShrub" type="CharacterBody2D" unique_id=1701785680]
+collision_layer = 4
+collision_mask = 3
 script = ExtResource("1_20njc")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=154615411]
@@ -20,7 +22,12 @@ position = Vector2(0, 1.5)
 shape = SubResource("RectangleShape2D_20njc")
 
 [node name="Hurtbox" type="Area2D" parent="." unique_id=478733635]
+collision_layer = 2
+collision_mask = 2
+monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox" unique_id=1689585859]
 shape = SubResource("RectangleShape2D_bq537")
 debug_color = Color(0.60303026, 0.5425727, 1.92523e-07, 0.41960785)
+
+[connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]

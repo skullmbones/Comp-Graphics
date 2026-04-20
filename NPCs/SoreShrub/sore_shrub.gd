@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-@export var max_health: int = 2
+@export var max_health: int = 50
 @export var touch_damage: int = 15
 @export var touch_cooldown: float = 0.5
 @export var gravity: float = 1200.0
@@ -29,6 +29,8 @@ func _physics_process(delta: float) -> void:
 		velocity.y += gravity * delta
 	else:
 		velocity.y = 0
+		
+	velocity = Vector2.ZERO
 
 	move_and_slide()
 	_check_attack_hits()
@@ -86,3 +88,8 @@ func _start_touch_cooldown() -> void:
 	can_touch_damage = false
 	await get_tree().create_timer(touch_cooldown).timeout
 	can_touch_damage = true
+
+
+func _on_hurtbox_area_entered(area: Area2D) -> void:
+	if area.is_in_group("player"):
+		take_damage(25)

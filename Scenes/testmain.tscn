@@ -216,13 +216,16 @@ position = Vector2(-2000, -150)
 script = ExtResource("10_83epy")
 
 [node name="Sprite2D" type="Sprite2D" parent="Objective/key1"]
+scale = Vector2(1.667, 0.883)
 texture = ExtResource("11_83epy")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Objective/key1"]
+scale = Vector2(1.667, 0.883)
 shape = SubResource("RectangleShape2D_6bedj")
 
 [node name="key2" type="Area2D" parent="Objective"]
 position = Vector2(900, 140)
+scale = Vector2(1.667, 0.883)
 script = ExtResource("10_83epy")
 piece_id = 2
 
@@ -234,6 +237,7 @@ shape = SubResource("RectangleShape2D_01dj5")
 
 [node name="key3" type="Area2D" parent="Objective"]
 position = Vector2(3000, -75)
+scale = Vector2(1.667, 0.883)
 script = ExtResource("10_83epy")
 piece_id = 3
 

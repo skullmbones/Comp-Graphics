@@ -7,11 +7,6 @@ func _ready() -> void:
 	player = get_node_or_null(player_path)
 
 	if player == null:
-		push_warning("health.gd: player_path is not set or is wrong")
-		return
-
-	if not ("max_health" in player) or not ("health" in player):
-		push_warning("health.gd: selected node is not the player")
 		return
 
 	min_value = 0

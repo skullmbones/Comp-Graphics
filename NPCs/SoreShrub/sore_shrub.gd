@@ -1,6 +1,7 @@
 extends CharacterBody2D
 
 @export var max_health: int = 50
+@export var attack_damage: int = 25
 @export var touch_damage: int = 15
 @export var touch_cooldown: float = 0.5
 @export var gravity: float = 1200.0
@@ -19,8 +20,6 @@ func _ready() -> void:
 	hurtbox.monitoring = true
 	hurtbox.monitorable = true
 
-	hurtbox.body_entered.connect(_on_hurtbox_body_entered)
-
 func _physics_process(delta: float) -> void:
 	if dead:
 		return
@@ -29,35 +28,39 @@ func _physics_process(delta: float) -> void:
 		velocity.y += gravity * delta
 	else:
 		velocity.y = 0
-		
+
 	velocity = Vector2.ZERO
-
 	move_and_slide()
-	_check_attack_hits()
 
-func _on_hurtbox_body_entered(body: Node) -> void:
-	if dead:
-		return
+	_check_overlaps()
 
-	if body.has_method("hit") and can_touch_damage:
-		body.hit(touch_damage)
-		_start_touch_cooldown()
-
-func _check_attack_hits() -> void:
-	var seen := {}
+func _check_overlaps() -> void:
+	var seen_attack_ids := {}
 
 	for area in hurtbox.get_overlapping_areas():
+		if area == null:
+			continue
+
+		# Player weapon hitbox damages shrub
 		if area.is_in_group("player_attack") or area.name == "Hitbox":
 			var id = area.get_instance_id()
-			seen[id] = true
+			seen_attack_ids[id] = true
 
 			if not counted_attack_areas.has(id):
 				counted_attack_areas[id] = true
-				take_damage(1)
+				take_damage(attack_damage)
 
-	# remove attack areas that are no longer overlapping
-	for id in counted_attack_areas.keys():
-		if not seen.has(id):
+		# Player hurtbox gets damaged by shrub
+		elif area.is_in_group("player_hurtbox") or area.name == "Hurtbox":
+			var player = area.get_parent()
+
+			if can_touch_damage and player != null and player.is_in_group("player"):
+				if player.has_method("hit"):
+					player.hit(touch_damage)
+					_start_touch_cooldown()
+
+	for id in counted_attack_areas.keys().duplicate():
+		if not seen_attack_ids.has(id):
 			counted_attack_areas.erase(id)
 
 func take_damage(amount: int) -> void:
@@ -88,8 +91,3 @@ func _start_touch_cooldown() -> void:
 	can_touch_damage = false
 	await get_tree().create_timer(touch_cooldown).timeout
 	can_touch_damage = true
-
-
-func _on_hurtbox_area_entered(area: Area2D) -> void:
-	if area.is_in_group("player"):
-		take_damage(25)

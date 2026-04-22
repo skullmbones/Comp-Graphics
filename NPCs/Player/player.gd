@@ -36,31 +36,28 @@ func _physics_process(delta: float) -> void:
 	else:
 		speed = walk_speed
 	var direction = Input.get_axis("move_left", "move_right")
-	if direction == 1:
+	if direction == 1 and not attacking:
 		get_node("AnimatedSprite2D").flip_h = false
 		$Hitbox.scale.x = 1
-	elif direction == -1:
+	elif direction == -1 and not attacking:
 		get_node("AnimatedSprite2D").flip_h = true
 		$Hitbox.scale.x = -1
-	if direction:
+	if direction and not attacking:
 		velocity.x = direction * speed
 		if speed == walk_speed:
 			$AnimatedSprite2D.play("walk")
 		elif speed == sprint_speed:
 			$AnimatedSprite2D.play("sprint")
-	else:
+	elif not attacking:
 		velocity.x = move_toward(velocity.x, 0, speed)
 		$AnimatedSprite2D.play("default")
 		
 	if Input.is_action_just_pressed("Attack") and not attacking:
 		attacking = true
 		#attack animation
-		$Hitbox/Sprite2D.visible = true
-		$Hitbox/CollisionShape2D.set_deferred("disabled", false)
-		$Hitbox/AttackTimer.start()
+		velocity.x = 0
+		$AnimatedSprite2D.play("attack")
 		$Hitbox/CooldownTimer.start()
-		
-		
 		
 	move_and_slide()
 	
@@ -86,7 +83,18 @@ func _on_cooldown_timer_timeout() -> void:
 	attacking = false
 
 func _on_attack_timer_timeout() -> void:
-	$Hitbox/Sprite2D.visible = false
 	$Hitbox/CollisionShape2D.set_deferred("disabled", true)
-	
-	
+
+func _on_animated_sprite_2d_frame_changed() -> void:
+	if $AnimatedSprite2D.animation == "attack" and $AnimatedSprite2D.frame == 3:
+		$Hitbox/CollisionShape2D.set_deferred("disabled", false)
+		$Hitbox/AttackTimer.start()
+
+
+func _on_animated_sprite_2d_animation_changed() -> void:
+	if $AnimatedSprite2D.animation == "attack" and $AnimatedSprite2D.flip_h == false:
+		$AnimatedSprite2D.offset = Vector2(7.5, 0)
+	elif $AnimatedSprite2D.animation == "attack" and $AnimatedSprite2D.flip_h == true:
+		$AnimatedSprite2D.offset = Vector2(-7.5, 0)
+	else:
+		$AnimatedSprite2D.offset = Vector2.ZERO

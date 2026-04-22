@@ -44,10 +44,10 @@ func _physics_process(delta: float) -> void:
 
 	var direction := Input.get_axis("move_left", "move_right")
 
-	if direction == 1:
+	if direction == 1 and not attacking:
 		$AnimatedSprite2D.flip_h = false
 		$Hitbox.scale.x = 1
-	elif direction == -1:
+	elif direction == -1 and not attacking:
 		$AnimatedSprite2D.flip_h = true
 		$Hitbox.scale.x = -1
 

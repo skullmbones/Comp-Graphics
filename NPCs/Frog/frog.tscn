@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://xe2bmc3dnyda"]
+[gd_scene load_steps=26 format=3 uid="uid://xe2bmc3dnyda"]
 
 [ext_resource type="Script" uid="uid://bb3sp4onw7thv" path="res://NPCs/Frog/frog.gd" id="1_l7qxg"]
 [ext_resource type="Texture2D" uid="uid://rbjttq12v2g8" path="res://Assets/frog/frogstand.png" id="2_banpu"]
@@ -110,6 +110,9 @@ size = Vector2(140, 20)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_v4xuc"]
 size = Vector2(28, 16)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wpap2"]
+size = Vector2(52, 8.875)
+
 [node name="frog" type="CharacterBody2D"]
 collision_layer = 4
 collision_mask = 3
@@ -121,11 +124,13 @@ attack_range_x = 60.0
 texture_filter = 1
 position = Vector2(0, 2)
 sprite_frames = SubResource("SpriteFrames_korxa")
-animation = &"walk"
+animation = &"attack"
+frame = 7
+frame_progress = 1.0
 flip_h = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-0.5, 8)
+position = Vector2(-7, 9)
 shape = SubResource("RectangleShape2D_3567s")
 
 [node name="ground" type="RayCast2D" parent="."]
@@ -137,7 +142,7 @@ target_position = Vector2(16, 0)
 [node name="vision" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="vision"]
-position = Vector2(2, 4)
+position = Vector2(2, 8)
 shape = SubResource("RectangleShape2D_k82ao")
 
 [node name="Hurtbox" type="Area2D" parent="."]
@@ -145,8 +150,18 @@ collision_layer = 2
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
-position = Vector2(0, 8)
+position = Vector2(-7, 9)
 shape = SubResource("RectangleShape2D_v4xuc")
 debug_color = Color(0.4813475, 0.51361704, 0.7615599, 0.41960785)
+
+[node name="TongueHitbox" type="Area2D" parent="."]
+collision_layer = 5
+collision_mask = 3
+monitoring = false
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TongueHitbox"]
+position = Vector2(-5, 8.5625)
+shape = SubResource("RectangleShape2D_wpap2")
 
 [connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]

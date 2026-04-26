@@ -21,7 +21,7 @@ var state: State = State.PATROL
 @export var turn_cooldown := 0.12
 
 # Attack
-@export var attack_range_x := 120.0
+@export var attack_range_x := 40.0
 @export var attack_range_y := 60.0
 @export var attack_frame := 4 # 5th frame
 
@@ -37,6 +37,7 @@ var spawn_x := 0.0
 @onready var wall_ray: RayCast2D = $wall
 @onready var vision: Area2D = $vision
 @onready var anim: AnimatedSprite2D = $AnimatedSprite2D
+@onready var tongue_hitbox: Area2D = $TongueHitbox
 
 func _ready() -> void:
 	spawn_x = global_position.x
@@ -47,6 +48,9 @@ func _ready() -> void:
 
 	anim.frame_changed.connect(_on_frame_changed)
 	anim.animation_finished.connect(_on_animation_finished)
+	tongue_hitbox.area_entered.connect(_on_tongue_hitbox_area_entered)
+	tongue_hitbox.monitoring = false
+	tongue_hitbox.monitorable = false
 
 func _physics_process(delta: float) -> void:
 	if not is_on_floor():
@@ -164,12 +168,16 @@ func _player_in_attack_window() -> bool:
 func _on_frame_changed() -> void:
 	if anim.animation == "attack" and anim.frame == attack_frame and not attack_applied:
 		attack_applied = true
-
-		if _player_in_attack_window():
-			if player and player.has_method("hit"):
-				player.hit(25)
+		tongue_hitbox.monitoring = true
+		tongue_hitbox.monitorable = true
+	else:
+		tongue_hitbox.monitoring = false
+		tongue_hitbox.monitorable = false
 
 func _on_animation_finished() -> void:
+	tongue_hitbox.monitoring = false
+	tongue_hitbox.monitorable = false
+	
 	if anim.animation == "attack":
 		attack_applied = false
 
@@ -184,6 +192,7 @@ func _turn() -> void:
 	_apply_dir_to_rays()
 
 func _apply_dir_to_rays() -> void:
+	tongue_hitbox.position.x = abs(tongue_hitbox.position.x) * dir
 	ground_ray.target_position.x = abs(ground_ray.target_position.x) * dir
 	wall_ray.target_position.x = abs(wall_ray.target_position.x) * dir
 
@@ -206,6 +215,16 @@ func _on_vision_body_exited(body: Node) -> void:
 
 		if state != State.ATTACK:
 			state = State.RETURN
+
+func _on_tongue_hitbox_area_entered(area: Area2D) -> void:
+	if area.is_in_group("player"):
+		var target = area.get_parent()
+
+		if target and target.has_method("hit"):
+			target.hit(20)
+
+		tongue_hitbox.monitoring = false
+		tongue_hitbox.monitorable = false
 
 func take_damage(amount: int) -> void:
 	health -= amount

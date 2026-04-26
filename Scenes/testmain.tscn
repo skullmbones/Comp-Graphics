@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=3 uid="uid://dk7st3tqoibnh"]
+[gd_scene load_steps=41 format=3 uid="uid://dk7st3tqoibnh"]
 
 [ext_resource type="Script" uid="uid://c1ihhwi7hpvil" path="res://Scripts/goal.gd" id="1_o2q7l"]
 [ext_resource type="Texture2D" uid="uid://b75u56l2k6t8j" path="res://ldtk/cageclosed.png" id="2_hr48u"]
@@ -30,10 +30,10 @@
 [ext_resource type="Texture2D" uid="uid://b8owmhd11g2g3" path="res://Assets/forestberries.png" id="27_2kvep"]
 [ext_resource type="PackedScene" uid="uid://d1uv632nd4d3v" path="res://ldtk/levels/Level_12.scn" id="27_ls8lp"]
 [ext_resource type="PackedScene" uid="uid://p4tgb77nvh8w" path="res://ldtk/levels/Level_13.scn" id="28_bfpu2"]
+[ext_resource type="PackedScene" uid="uid://xe2bmc3dnyda" path="res://NPCs/Frog/frog.tscn" id="29_2gms3"]
 [ext_resource type="PackedScene" uid="uid://jeaq1hrnx64y" path="res://ldtk/levels/Level_14.scn" id="29_k4l86"]
 [ext_resource type="PackedScene" uid="uid://qovo07cka6ej" path="res://ldtk/levels/Level_15.scn" id="30_f70so"]
 [ext_resource type="PackedScene" uid="uid://dx2nymwmm2s3m" path="res://ldtk/levels/Level_16.scn" id="31_tw0x4"]
-[ext_resource type="PackedScene" uid="uid://xe2bmc3dnyda" path="res://NPCs/Frog/frog.tscn" id="29_2gms3"]
 
 [sub_resource type="GDScript" id="GDScript_o2q7l"]
 script/source = "extends Node2D
@@ -106,7 +106,7 @@ polygon = PackedVector2Array(-7.1133423, 267.94434, 501.4901, 267.94434, 501.490
 [node name="Level_11" type="CollisionPolygon2D" parent="Level Collisions"]
 position = Vector2(-1522.2532, -267.94437)
 scale = Vector2(1.0000001, 1.0000001)
-polygon = PackedVector2Array(-7.1133423, 267.94434, 508.6034, 267.94434, 508.6034, 171.85118, 489.48633, 171.85118, 489.48633, 155.90211, 457.9209, 155.90211, 457.9209, 139.95305, 409.90588, 139.95305, 409.90588, 124.00399, 362.33545, 124.00399, 362.33545, 108.054924, 283.1996, 108.054924, 283.1996, 124.00399, 266.75, 124.00399, 266.75, 108.054924, 235.1847, 108.054924, 235.1847, 124.00399, 171.60925, 124.00399, 171.60925, 139.95305, 92.02881, 139.95305, 92.02881, 147.52885, 92.02881, 155.90211, 60.0188, 155.90211, 60.0188, 171.85118, -7.1132813, 171.85118)
+polygon = PackedVector2Array(-7.1133423, 267.94434, 508.6034, 267.94434, 508.6034, 171.85118, 489.48633, 171.85118, 489.48633, 155.90211, 457.9209, 155.90211, 457.9209, 139.95305, 409.90588, 139.95305, 409.90588, 124.00399, 362.33545, 124.00399, 362.33545, 108.054924, 235.1847, 108.054924, 235.1847, 124.00399, 171.60925, 124.00399, 171.60925, 139.95305, 92.02881, 139.95305, 92.02881, 147.52885, 92.02881, 155.90211, 60.0188, 155.90211, 60.0188, 171.85118, -7.1132813, 171.85118)
 
 [node name="Level_6" type="CollisionPolygon2D" parent="Level Collisions"]
 position = Vector2(-1013.64954, -267.9444)
@@ -232,6 +232,10 @@ collision_layer = 1
 [node name="UpsideDowner" parent="." instance=ExtResource("5_mc6jq")]
 position = Vector2(5712.8374, 273.33813)
 scale = Vector2(1, 0.51809114)
+
+[node name="frog" parent="." instance=ExtResource("29_2gms3")]
+position = Vector2(3052.4114, 2.6094358)
+scale = Vector2(1.667, 0.813)
 
 [node name="GameOver" type="CanvasLayer" parent="."]
 process_mode = 3
@@ -458,9 +462,6 @@ texture = ExtResource("27_2kvep")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="berry2"]
 scale = Vector2(0.5, 0.883)
 shape = SubResource("RectangleShape2D_sxgro")
-
-[node name="frog" parent="." instance=ExtResource("29_2gms3")]
-position = Vector2(3050.9211, 1.3047152)
 
 [connection signal="body_entered" from="Goal" to="Goal" method="_on_body_entered"]
 [connection signal="pressed" from="GameOver/Retry" to="GameOver" method="_on_retry_pressed"]

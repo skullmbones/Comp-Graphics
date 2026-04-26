@@ -258,7 +258,7 @@ texture_filter = 1
 position = Vector2(0, -1)
 scale = Vector2(1.4728231, 1.2998813)
 sprite_frames = SubResource("SpriteFrames_6vnh3")
-animation = &"walk"
+animation = &"kill"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0.50000364, 1.2999983)

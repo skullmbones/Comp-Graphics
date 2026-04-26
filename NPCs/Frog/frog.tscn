@@ -1,0 +1,152 @@
+[gd_scene load_steps=25 format=3 uid="uid://xe2bmc3dnyda"]
+
+[ext_resource type="Script" uid="uid://bb3sp4onw7thv" path="res://NPCs/Frog/frog.gd" id="1_l7qxg"]
+[ext_resource type="Texture2D" uid="uid://rbjttq12v2g8" path="res://Assets/frog/frogstand.png" id="2_banpu"]
+[ext_resource type="Texture2D" uid="uid://bc8r1dcdk3gag" path="res://Assets/frog/frogdamage.png" id="2_k82ao"]
+[ext_resource type="Texture2D" uid="uid://c3vat4u3burce" path="res://Assets/frog/attack/frogattack_1.png" id="2_wpap2"]
+[ext_resource type="Texture2D" uid="uid://cfgu7kjhuoomj" path="res://Assets/frog/jump/frogjump_1.png" id="3_k82ao"]
+[ext_resource type="Texture2D" uid="uid://bmd4a7dj6gadv" path="res://Assets/frog/attack/frogattack_2.png" id="3_korxa"]
+[ext_resource type="Texture2D" uid="uid://er28aismmxg0" path="res://Assets/frog/attack/frogattack_3.png" id="4_7bca8"]
+[ext_resource type="Texture2D" uid="uid://djus5ha32rkiy" path="res://Assets/frog/jump/frogjump_2.png" id="4_3567s"]
+[ext_resource type="Texture2D" uid="uid://b7y6mx8d0deck" path="res://Assets/frog/attack/frogattack_4.png" id="5_ibdyd"]
+[ext_resource type="Texture2D" uid="uid://cwee7v150j4rt" path="res://Assets/frog/jump/frogjump_3.png" id="5_v4xuc"]
+[ext_resource type="Texture2D" uid="uid://batw7gut1w10h" path="res://Assets/frog/jump/frogjump_4.png" id="6_1xct6"]
+[ext_resource type="Texture2D" uid="uid://wa4kvc5c868a" path="res://Assets/frog/attack/frogattack_5.png" id="6_v80hx"]
+[ext_resource type="Texture2D" uid="uid://ceirfk6xdqcki" path="res://Assets/frog/attack/frogattack_6.png" id="7_lpxmf"]
+[ext_resource type="Texture2D" uid="uid://cfpv55a3twt83" path="res://Assets/frog/jump/frogjump_5.png" id="7_okwsc"]
+[ext_resource type="Texture2D" uid="uid://ma1s8u2m6lqt" path="res://Assets/frog/attack/frogattack_7.png" id="8_okute"]
+[ext_resource type="Texture2D" uid="uid://gikllv7dcmo2" path="res://Assets/frog/jump/frogjump_6.png" id="8_vpc0n"]
+[ext_resource type="Texture2D" uid="uid://bokv21m76hft1" path="res://Assets/frog/attack/frogattack_8.png" id="9_14yx7"]
+[ext_resource type="Texture2D" uid="uid://dgcix40dsub2f" path="res://Assets/frog/jump/frogjump_7.png" id="9_banb6"]
+[ext_resource type="Texture2D" uid="uid://b0ppg2rhtpfg2" path="res://Assets/frog/jump/frogjump_8.png" id="10_31jd0"]
+[ext_resource type="Texture2D" uid="uid://c1octbe7o8wks" path="res://Assets/frog/jump/frogjump_9.png" id="11_wpap2"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_korxa"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_wpap2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_korxa")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_7bca8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_ibdyd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_v80hx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_lpxmf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_okute")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_14yx7")
+}],
+"loop": false,
+"name": &"attack",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_k82ao")
+}],
+"loop": true,
+"name": &"damage",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_banpu")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_k82ao")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_3567s")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_v4xuc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_1xct6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_okwsc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_vpc0n")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_banb6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_31jd0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_wpap2")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3567s"]
+size = Vector2(29, 18)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_k82ao"]
+size = Vector2(140, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_v4xuc"]
+size = Vector2(28, 16)
+
+[node name="frog" type="CharacterBody2D"]
+collision_layer = 4
+collision_mask = 3
+floor_snap_length = 0.0
+script = ExtResource("1_l7qxg")
+attack_range_x = 60.0
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+position = Vector2(0, 2)
+sprite_frames = SubResource("SpriteFrames_korxa")
+animation = &"walk"
+flip_h = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, 8)
+shape = SubResource("RectangleShape2D_3567s")
+
+[node name="ground" type="RayCast2D" parent="."]
+target_position = Vector2(16, 32)
+
+[node name="wall" type="RayCast2D" parent="."]
+target_position = Vector2(16, 0)
+
+[node name="vision" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="vision"]
+position = Vector2(2, 4)
+shape = SubResource("RectangleShape2D_k82ao")
+
+[node name="Hurtbox" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+position = Vector2(0, 8)
+shape = SubResource("RectangleShape2D_v4xuc")
+debug_color = Color(0.4813475, 0.51361704, 0.7615599, 0.41960785)
+
+[connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]

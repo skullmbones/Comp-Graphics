@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://dk7st3tqoibnh"]
+[gd_scene load_steps=36 format=3 uid="uid://dk7st3tqoibnh"]
 
 [ext_resource type="Script" uid="uid://c1ihhwi7hpvil" path="res://Scripts/goal.gd" id="1_o2q7l"]
 [ext_resource type="Texture2D" uid="uid://duj6cri6cpv1w" path="res://icon.svg" id="2_34vxp"]
@@ -28,6 +28,7 @@
 [ext_resource type="PackedScene" uid="uid://d1j0ulanqs52g" path="res://ldtk/levels/Level_9.scn" id="20_3tk2o"]
 [ext_resource type="Script" uid="uid://c3pnb2eiwhm4q" path="res://Scripts/consumables.gd" id="26_2kvep"]
 [ext_resource type="Texture2D" uid="uid://b8owmhd11g2g3" path="res://Assets/forestberries.png" id="27_2kvep"]
+[ext_resource type="PackedScene" uid="uid://xe2bmc3dnyda" path="res://NPCs/Frog/frog.tscn" id="29_2gms3"]
 
 [sub_resource type="GDScript" id="GDScript_o2q7l"]
 script/source = "extends Node2D
@@ -220,7 +221,9 @@ scale = Vector2(0.88749367, 0.8975801)
 position = Vector2(5061.5176, 146.1283)
 
 [node name="key1" type="Area2D" parent="Objective"]
+visible = false
 position = Vector2(-2000, -150)
+monitoring = false
 script = ExtResource("10_83epy")
 
 [node name="Sprite2D" type="Sprite2D" parent="Objective/key1"]
@@ -385,6 +388,9 @@ texture = ExtResource("27_2kvep")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="berry2"]
 scale = Vector2(0.5, 0.883)
 shape = SubResource("RectangleShape2D_sxgro")
+
+[node name="frog" parent="." instance=ExtResource("29_2gms3")]
+position = Vector2(3050.9211, 1.3047152)
 
 [connection signal="body_entered" from="Goal" to="Goal" method="_on_body_entered"]
 [connection signal="pressed" from="GameOver/Retry" to="GameOver" method="_on_retry_pressed"]

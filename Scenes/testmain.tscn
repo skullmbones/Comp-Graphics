@@ -306,7 +306,7 @@ texture = ExtResource("12_2kvep")
 shape = SubResource("RectangleShape2D_01dj5")
 
 [node name="key3" type="Area2D" parent="Objective" unique_id=2043484197]
-position = Vector2(3000, -75)
+position = Vector2(5827.6035, 114.48885)
 scale = Vector2(1.667, 0.883)
 script = ExtResource("10_83epy")
 piece_id = 3
@@ -343,9 +343,9 @@ player_path = NodePath("../../../../Player")
 
 [node name="TimerLabel" type="Label" parent="HUD" unique_id=1884209412]
 custom_minimum_size = Vector2(-20, 20)
-offset_left = 934.0
+offset_left = 940.0
 offset_top = 24.0
-offset_right = 991.0
+offset_right = 997.0
 offset_bottom = 50.0
 text = "Time: 0"
 horizontal_alignment = 2
@@ -478,10 +478,10 @@ color = Color(0, 0, 0.28235295, 1)
 
 [node name="ColorRect4" type="ColorRect" parent="." unique_id=1936014544]
 z_index = -1
-offset_left = -965.0568
-offset_top = -485.02844
-offset_right = 5050.342
-offset_bottom = 146.45447
+offset_left = -953.87866
+offset_top = -485.3546
+offset_right = 5061.5195
+offset_bottom = 146.1283
 color = Color(0, 0, 0.28235295, 1)
 
 [node name="ColorRect3" type="ColorRect" parent="." unique_id=517866010]

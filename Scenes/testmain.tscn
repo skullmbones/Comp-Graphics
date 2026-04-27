@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=3 uid="uid://dk7st3tqoibnh"]
+[gd_scene load_steps=43 format=3 uid="uid://dk7st3tqoibnh"]
 
 [ext_resource type="Script" uid="uid://c1ihhwi7hpvil" path="res://Scripts/goal.gd" id="1_o2q7l"]
 [ext_resource type="Texture2D" uid="uid://b75u56l2k6t8j" path="res://ldtk/cageclosed.png" id="2_hr48u"]
@@ -34,6 +34,7 @@
 [ext_resource type="PackedScene" uid="uid://jeaq1hrnx64y" path="res://ldtk/levels/Level_14.scn" id="29_k4l86"]
 [ext_resource type="PackedScene" uid="uid://qovo07cka6ej" path="res://ldtk/levels/Level_15.scn" id="30_f70so"]
 [ext_resource type="PackedScene" uid="uid://dx2nymwmm2s3m" path="res://ldtk/levels/Level_16.scn" id="31_tw0x4"]
+[ext_resource type="Script" uid="uid://cb3pt5ubw0xwa" path="res://Scenes/underwater.gd" id="35_bfpu2"]
 
 [sub_resource type="GDScript" id="GDScript_o2q7l"]
 script/source = "extends Node2D
@@ -64,6 +65,9 @@ size = Vector2(56.792862, 30.115788)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_83epy"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sxgro"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_k4l86"]
+size = Vector2(2557.5872, 206.14525)
 
 [node name="Node2D" type="Node2D" groups=["player"]]
 position = Vector2(72.00003, 192)
@@ -462,6 +466,54 @@ texture = ExtResource("27_2kvep")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="berry2"]
 scale = Vector2(0.5, 0.883)
 shape = SubResource("RectangleShape2D_sxgro")
+
+[node name="ColorRect2" type="ColorRect" parent="."]
+z_index = -1
+offset_left = 5985.588
+offset_top = -331.39804
+offset_right = 11881.75
+offset_bottom = 143.51883
+color = Color(0, 0, 0.28235295, 1)
+
+[node name="ColorRect4" type="ColorRect" parent="."]
+z_index = -1
+offset_left = -953.87866
+offset_top = -485.3546
+offset_right = 5061.5195
+offset_bottom = 146.1283
+color = Color(0, 0, 0.28235295, 1)
+
+[node name="ColorRect3" type="ColorRect" parent="."]
+z_index = -1
+offset_left = 4208.989
+offset_top = 146.12827
+offset_right = 7619.106
+offset_bottom = 354.88293
+color = Color(0.05248388, 0.019135853, 0, 1)
+
+[node name="ColorRect5" type="ColorRect" parent="."]
+z_index = -1
+offset_left = 11029.222
+offset_top = 143.51883
+offset_right = 11881.75
+offset_bottom = 352.2735
+color = Color(0.05248388, 0.019135853, 0, 1)
+
+[node name="Underwater" type="Area2D" parent="."]
+position = Vector2(8525.29, 169.61317)
+script = ExtResource("35_bfpu2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Underwater"]
+position = Vector2(1225.1357, 79.58772)
+shape = SubResource("RectangleShape2D_k4l86")
+
+[node name="ColorRect" type="ColorRect" parent="Underwater"]
+z_index = -1
+offset_left = -53.655674
+offset_top = -26.094336
+offset_right = 2503.9312
+offset_bottom = 182.66034
+color = Color(0.34509805, 0.6117647, 0.9137255, 1)
 
 [connection signal="body_entered" from="Goal" to="Goal" method="_on_body_entered"]
 [connection signal="pressed" from="GameOver/Retry" to="GameOver" method="_on_retry_pressed"]

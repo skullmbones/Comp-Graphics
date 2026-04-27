@@ -343,9 +343,9 @@ player_path = NodePath("../../../../Player")
 
 [node name="TimerLabel" type="Label" parent="HUD" unique_id=1884209412]
 custom_minimum_size = Vector2(-20, 20)
-offset_left = 960.0
+offset_left = 934.0
 offset_top = 24.0
-offset_right = 1017.0
+offset_right = 991.0
 offset_bottom = 50.0
 text = "Time: 0"
 horizontal_alignment = 2
@@ -478,10 +478,10 @@ color = Color(0, 0, 0.28235295, 1)
 
 [node name="ColorRect4" type="ColorRect" parent="." unique_id=1936014544]
 z_index = -1
-offset_left = -953.87866
-offset_top = -485.3546
-offset_right = 5061.5195
-offset_bottom = 146.1283
+offset_left = -965.0568
+offset_top = -485.02844
+offset_right = 5050.342
+offset_bottom = 146.45447
 color = Color(0, 0, 0.28235295, 1)
 
 [node name="ColorRect3" type="ColorRect" parent="." unique_id=517866010]
@@ -517,23 +517,11 @@ offset_bottom = 182.66034
 color = Color(0.34509805, 0.6117647, 0.9137255, 1)
 
 [node name="Ghost" parent="." unique_id=1458966020 instance=ExtResource("36_k4l86")]
-position = Vector2(5276.1406, 247.56998)
-scale = Vector2(1.0595883, 0.4911605)
-
-[node name="Ghost5" parent="." unique_id=500393379 instance=ExtResource("36_k4l86")]
-position = Vector2(5706.877, 245.61292)
-scale = Vector2(1.0595883, 0.4911605)
-
-[node name="Ghost3" parent="." unique_id=479691762 instance=ExtResource("36_k4l86")]
-position = Vector2(8801.021, 245.93909)
-scale = Vector2(1.0595883, 0.4911605)
-
-[node name="Ghost4" parent="." unique_id=1810857367 instance=ExtResource("36_k4l86")]
-position = Vector2(10261.647, 217.23532)
+position = Vector2(6277.7144, 241.37259)
 scale = Vector2(1.0595883, 0.4911605)
 
 [node name="Ghost2" parent="." unique_id=81331675 instance=ExtResource("36_k4l86")]
-position = Vector2(7133.223, 272.0334)
+position = Vector2(6522.1445, 214.95207)
 scale = Vector2(1.0595883, 0.4911605)
 
 [connection signal="body_entered" from="Goal" to="Goal" method="_on_body_entered"]

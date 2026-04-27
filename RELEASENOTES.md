@@ -1,3 +1,16 @@
+Feature Complete Build:
+    Pillar 1: NPC AI
+        2 new enemy NPCs
+            Frog that chases players and rapidly attacks
+            Ghost that is stationary and shoots at player
+    Pillar 2: Collision Detection
+        Underwater section that detects when player is under water and changes their movement
+
+    Added multiple collectibles:
+        Key fragments, required to unlock the cage at the end
+        Berries, heals the player
+
+Beta Build:
 Review:
     Pillar 1: NPC AI
         1 enemy that patrols an area, when detecting the player, it chases the player and has an attack

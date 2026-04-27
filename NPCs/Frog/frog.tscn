@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://xe2bmc3dnyda"]
+[gd_scene format=3 uid="uid://xe2bmc3dnyda"]
 
 [ext_resource type="Script" uid="uid://bb3sp4onw7thv" path="res://NPCs/Frog/frog.gd" id="1_l7qxg"]
 [ext_resource type="Texture2D" uid="uid://rbjttq12v2g8" path="res://Assets/frog/frogstand.png" id="2_banpu"]
@@ -50,7 +50,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"attack",
-"speed": 5.0
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -58,7 +58,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"damage",
-"speed": 5.0
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -98,7 +98,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"walk",
-"speed": 5.0
+"speed": 10.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3567s"]
@@ -113,14 +113,14 @@ size = Vector2(28, 16)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wpap2"]
 size = Vector2(52, 8.875)
 
-[node name="frog" type="CharacterBody2D"]
+[node name="frog" type="CharacterBody2D" unique_id=1272718264]
 collision_layer = 4
 collision_mask = 3
 floor_snap_length = 0.0
 script = ExtResource("1_l7qxg")
 attack_range_x = 60.0
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1963018378]
 texture_filter = 1
 position = Vector2(0, 2)
 sprite_frames = SubResource("SpriteFrames_korxa")
@@ -129,38 +129,38 @@ frame = 7
 frame_progress = 1.0
 flip_h = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=768399361]
 position = Vector2(-7, 9)
 shape = SubResource("RectangleShape2D_3567s")
 
-[node name="ground" type="RayCast2D" parent="."]
+[node name="ground" type="RayCast2D" parent="." unique_id=1564281223]
 target_position = Vector2(16, 32)
 
-[node name="wall" type="RayCast2D" parent="."]
+[node name="wall" type="RayCast2D" parent="." unique_id=440654776]
 target_position = Vector2(16, 0)
 
-[node name="vision" type="Area2D" parent="."]
+[node name="vision" type="Area2D" parent="." unique_id=1865773955]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="vision"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="vision" unique_id=862659375]
 position = Vector2(2, 8)
 shape = SubResource("RectangleShape2D_k82ao")
 
-[node name="Hurtbox" type="Area2D" parent="."]
+[node name="Hurtbox" type="Area2D" parent="." unique_id=809433920]
 collision_layer = 2
 collision_mask = 2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox" unique_id=945468057]
 position = Vector2(-7, 9)
 shape = SubResource("RectangleShape2D_v4xuc")
 debug_color = Color(0.4813475, 0.51361704, 0.7615599, 0.41960785)
 
-[node name="TongueHitbox" type="Area2D" parent="."]
+[node name="TongueHitbox" type="Area2D" parent="." unique_id=703217345]
 collision_layer = 5
 collision_mask = 3
 monitoring = false
 monitorable = false
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="TongueHitbox"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TongueHitbox" unique_id=993343752]
 position = Vector2(-5, 8.5625)
 shape = SubResource("RectangleShape2D_wpap2")
 

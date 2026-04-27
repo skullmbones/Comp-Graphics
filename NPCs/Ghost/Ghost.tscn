@@ -1,0 +1,95 @@
+[gd_scene format=3 uid="uid://bfdcbb8ya2rfp"]
+
+[ext_resource type="Script" uid="uid://dwx02j3s50g1q" path="res://NPCs/Ghost/ghost.gd" id="1_cg8y7"]
+[ext_resource type="Texture2D" uid="uid://dtwyr484aqnk3" path="res://Assets/Ghost/Ghost Attack/ghost_openmouth.png" id="3_qcqrq"]
+[ext_resource type="Texture2D" uid="uid://caqnod1edgb73" path="res://Assets/Ghost/ghoststill.png" id="23_hf647"]
+[ext_resource type="Texture2D" uid="uid://ddow67nedmh8j" path="res://Assets/Ghost/Ghost Walk/ghostwalk1.png" id="24_ypw53"]
+[ext_resource type="Texture2D" uid="uid://3assvc3bqve8" path="res://Assets/Ghost/Ghost Walk/ghostwalk2.png" id="25_dr61m"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jtsy7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("23_hf647")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_qcqrq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_qcqrq")
+}],
+"loop": false,
+"name": &"attack",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("23_hf647")
+}],
+"loop": true,
+"name": &"stand",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("24_ypw53")
+}, {
+"duration": 1.0,
+"texture": ExtResource("25_dr61m")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 10.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_75m4h"]
+size = Vector2(8, 18.939384)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_pxpk2"]
+radius = 126.00397
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cg8y7"]
+size = Vector2(10, 27)
+
+[node name="Ghost" type="CharacterBody2D" unique_id=1458966020]
+light_mask = 4
+visibility_layer = 3
+script = ExtResource("1_cg8y7")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1891395726]
+sprite_frames = SubResource("SpriteFrames_jtsy7")
+animation = &"walk"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=924053621]
+light_mask = 2
+visibility_layer = 3
+position = Vector2(-1, -1.4999992)
+scale = Vector2(1, 1.3200006)
+shape = SubResource("RectangleShape2D_75m4h")
+disabled = true
+
+[node name="vision" type="Area2D" parent="." unique_id=609279417]
+light_mask = 4
+visibility_layer = 3
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="vision" unique_id=1730697977]
+light_mask = 2
+visibility_layer = 3
+shape = SubResource("CircleShape2D_pxpk2")
+debug_color = Color(0.3882353, 0.44705883, 0.22745098, 0.41960785)
+
+[node name="Area2D" type="Area2D" parent="." unique_id=865463986]
+light_mask = 2
+visibility_layer = 2
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=977081392]
+position = Vector2(-1, -1.5)
+shape = SubResource("RectangleShape2D_cg8y7")
+
+[node name="cooldown" type="Timer" parent="." unique_id=168659626]
+
+[connection signal="body_entered" from="vision" to="." method="_on_vision_body_entered"]
+[connection signal="body_exited" from="vision" to="." method="_on_vision_body_exited"]
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="timeout" from="cooldown" to="." method="_on_cooldown_timeout"]

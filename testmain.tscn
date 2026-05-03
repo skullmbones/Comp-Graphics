@@ -1,14 +1,10 @@
-[gd_scene format=3 uid="uid://ce4g2yuaabftq"]
+[gd_scene load_steps=10 format=3 uid="uid://ce4g2yuaabftq"]
 
 [ext_resource type="PackedScene" uid="uid://c88voq5qyiykq" path="res://NPCs/Player/player.tscn" id="1_lc8tu"]
 [ext_resource type="Texture2D" uid="uid://duj6cri6cpv1w" path="res://icon.svg" id="3_e4sdq"]
 [ext_resource type="PackedScene" uid="uid://yioswovg8mg5" path="res://ldtk/levels/Level_0.scn" id="4_ug6is"]
 [ext_resource type="PackedScene" uid="uid://dgp4g0skpg8uy" path="res://NPCs/UpsiderDowner/UpsideDowner.tscn" id="5_rn6st"]
-[ext_resource type="Script" path="res://game_over.gd" id="59_d443u"]
-[ext_resource type="Script" path="res://objective.gd" id="60_fgn3h"]
-[ext_resource type="Script" path="res://goal.gd" id="61_0brfu"]
 [ext_resource type="Texture2D" uid="uid://c74yi64dtyilx" path="res://Assets/youdiedscreen.png" id="62_irx12"]
-[ext_resource type="Script" path="res://hud.gd" id="63_ug6is"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ylfqa"]
 size = Vector2(30.120878, 23.699532)
@@ -20,65 +16,63 @@ size = Vector2(30.120878, 23.699532)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0brfu"]
 size = Vector2(128.02515, 126.87622)
 
-[node name="Node2D" type="Node2D" unique_id=1182927875 groups=["player"]]
+[node name="Node2D" type="Node2D" groups=["player"]]
 scale = Vector2(1.3418899, 3.0657997)
 
-[node name="Goal" type="Area2D" parent="." unique_id=550403086]
-script = ExtResource("61_0brfu")
+[node name="Goal" type="Area2D" parent="."]
 
-[node name="Sprite2D" type="Sprite2D" parent="Goal" unique_id=1833029832]
+[node name="Sprite2D" type="Sprite2D" parent="Goal"]
 position = Vector2(23.846966, 132.65616)
 scale = Vector2(0.26129743, 0.2105018)
 texture = ExtResource("3_e4sdq")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Goal" unique_id=1674056398]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Goal"]
 position = Vector2(23.690884, 131.55753)
 shape = SubResource("RectangleShape2D_ylfqa")
 
-[node name="Level_0" parent="." unique_id=1935365678 instance=ExtResource("4_ug6is")]
+[node name="Level_0" parent="." instance=ExtResource("4_ug6is")]
 scale = Vector2(1.6744857, 0.8184477)
 
-[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=614915524]
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
 scale = Vector2(1.6762155, 0.81805205)
 disable_mode = 2
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D" unique_id=493196236]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
 polygon = PackedVector2Array(0, 257, 512, 256, 512, 209, 463, 209, 463, 193, 447, 193, 447, 176, 319, 176, 319, 160, 304, 160, 304, 144, 208, 144, 208, 160, 160, 160, 160, 176, 0, 176)
 
-[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="StaticBody2D" unique_id=329621929]
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="StaticBody2D"]
 polygon = PackedVector2Array(0, 0, 0, 95, 96, 95, 96, 80, 112, 80, 112, 65, 160, 65, 160, 80, 192, 80, 192, 64, 208, 64, 208, 48, 223, 48, 223, 64, 239, 64, 239, 79, 288, 79, 288, 64, 304, 64, 304, 48, 336, 48, 336, 63, 368, 64, 368, 80, 400, 80, 400, 96, 432, 96, 432, 112, 464, 112, 464, 96, 496, 96, 496, 112, 512, 112, 512, -1)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=119838808]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2(-2, 150)
 rotation = 1.5707964
 shape = SubResource("WorldBoundaryShape2D_irx12")
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D" unique_id=657629962]
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2(513, 159)
 rotation = -1.5707964
 shape = SubResource("WorldBoundaryShape2D_rn6st")
 
-[node name="Player" parent="." unique_id=2117267111 instance=ExtResource("1_lc8tu")]
+[node name="Player" parent="." instance=ExtResource("1_lc8tu")]
 position = Vector2(105.82091, 128.18842)
 scale = Vector2(2.0702717, 1)
 disable_mode = 2
 jump_velocity = -300
 
-[node name="UpsideDowner" parent="." unique_id=1634561870 instance=ExtResource("5_rn6st")]
+[node name="UpsideDowner" parent="." instance=ExtResource("5_rn6st")]
 position = Vector2(651.3202, 127.20988)
 scale = Vector2(1, 0.51809114)
 
-[node name="GameOver" type="CanvasLayer" parent="." unique_id=287233086]
+[node name="GameOver" type="CanvasLayer" parent="."]
 process_mode = 3
 visible = false
-script = ExtResource("59_d443u")
 
-[node name="Panel" type="Panel" parent="GameOver" unique_id=393088570]
+[node name="Panel" type="Panel" parent="GameOver"]
 offset_right = 1155.0
 offset_bottom = 645.0
 scale = Vector2(0.88749367, 0.8975801)
 
-[node name="TextureRect" type="TextureRect" parent="GameOver" unique_id=1354183501]
+[node name="TextureRect" type="TextureRect" parent="GameOver"]
 offset_left = 204.0
 offset_top = 45.0
 offset_right = 989.0
@@ -87,60 +81,58 @@ scale = Vector2(0.88749367, 0.8975801)
 texture = ExtResource("62_irx12")
 stretch_mode = 4
 
-[node name="Retry" type="Button" parent="GameOver" unique_id=352240430]
+[node name="Retry" type="Button" parent="GameOver"]
 offset_left = 279.99997
 offset_top = 345.00003
 offset_right = 537.0
 offset_bottom = 458.00003
 scale = Vector2(0.88749367, 0.8975801)
 
-[node name="Quit" type="Button" parent="GameOver" unique_id=1569496845]
+[node name="Quit" type="Button" parent="GameOver"]
 offset_left = 593.0
 offset_top = 342.00003
 offset_right = 854.0
 offset_bottom = 451.00003
 scale = Vector2(0.88749367, 0.8975801)
 
-[node name="Objective" type="Area2D" parent="." unique_id=1315781418 groups=["objective"]]
-script = ExtResource("60_fgn3h")
+[node name="Objective" type="Area2D" parent="." groups=["objective"]]
 
-[node name="Sprite2D" type="Sprite2D" parent="Objective" unique_id=1637795723]
+[node name="Sprite2D" type="Sprite2D" parent="Objective"]
 position = Vector2(824.2109, 134.05963)
 scale = Vector2(0.14552242, 0.061700284)
 texture = ExtResource("3_e4sdq")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Objective" unique_id=872788706]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Objective"]
 position = Vector2(824.5834, 134.05965)
 scale = Vector2(0.14552246, 0.06170029)
 shape = SubResource("RectangleShape2D_0brfu")
 
-[node name="HUD" type="CanvasLayer" parent="." unique_id=1454347668 groups=["hud"]]
-script = ExtResource("63_ug6is")
+[node name="HUD" type="CanvasLayer" parent="." groups=["hud"]]
 
-[node name="LeftMargin" type="MarginContainer" parent="HUD" unique_id=931600726]
+[node name="LeftMargin" type="MarginContainer" parent="HUD"]
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="HUD/LeftMargin" unique_id=1914727262]
+[node name="VBoxContainer" type="VBoxContainer" parent="HUD/LeftMargin"]
 layout_mode = 2
 theme_override_constants/separation = 12
 
-[node name="HP" type="Label" parent="HUD/LeftMargin/VBoxContainer" unique_id=1774584304]
+[node name="HP" type="Label" parent="HUD/LeftMargin/VBoxContainer"]
 layout_mode = 2
 text = "HP:"
 
-[node name="HPBar" type="ProgressBar" parent="HUD/LeftMargin/VBoxContainer" unique_id=131498967]
+[node name="HPBar" type="ProgressBar" parent="HUD/LeftMargin/VBoxContainer"]
 custom_minimum_size = Vector2(200, 20)
 layout_mode = 2
 max_value = 10.0
 value = 10.0
 show_percentage = false
 
-[node name="KeyLabel" type="Label" parent="HUD/LeftMargin/VBoxContainer" unique_id=25658536]
+[node name="KeyLabel" type="Label" parent="HUD/LeftMargin/VBoxContainer"]
 layout_mode = 2
 text = "Keys: 0"
 
-[node name="TimerLabel" type="Label" parent="HUD" unique_id=1907119273]
+[node name="TimerLabel" type="Label" parent="HUD"]
 custom_minimum_size = Vector2(-20, 20)
 offset_left = 1063.0
 offset_top = 19.0

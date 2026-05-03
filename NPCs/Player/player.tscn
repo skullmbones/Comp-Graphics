@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://c88voq5qyiykq"]
+[gd_scene load_steps=34 format=3 uid="uid://c88voq5qyiykq"]
 
 [ext_resource type="Script" uid="uid://cumvs2k85bfw0" path="res://NPCs/Player/player.gd" id="1_onrkg"]
 [ext_resource type="Texture2D" uid="uid://dkn8ga8nll8bv" path="res://Assets/Player/Attack/playerattack_1.png" id="2_iphcd"]
@@ -24,7 +24,11 @@
 [ext_resource type="Texture2D" uid="uid://cowah1mme7c7l" path="res://Assets/Player/Walk/playerwalk11.png" id="13_dx0e4"]
 [ext_resource type="Texture2D" uid="uid://b7nxv1c31i7xt" path="res://Assets/Player/Walk/playerwalk12.png" id="14_jm5j8"]
 [ext_resource type="Texture2D" uid="uid://duj6cri6cpv1w" path="res://icon.svg" id="15_606se"]
+[ext_resource type="Texture2D" uid="uid://8xcuy05251fl" path="res://Assets/Player/Swim/playerswim_1and2.png" id="16_58oju"]
 [ext_resource type="Script" uid="uid://bgyc82asf154n" path="res://Scripts/camera.gd" id="16_dy8o3"]
+[ext_resource type="Texture2D" uid="uid://b6bykaq14ne4" path="res://Assets/Player/Swim/playerswim_3and4.png" id="17_hscmk"]
+[ext_resource type="Texture2D" uid="uid://bl24h1knkt5s5" path="res://Assets/Player/Swim/playerswim_5and6.png" id="18_tujwq"]
+[ext_resource type="Texture2D" uid="uid://dcde8753f4qyk" path="res://Assets/Player/Swim/playerswim_7and8.png" id="19_jy420"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_onrkg"]
 animations = [{
@@ -99,6 +103,23 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": ExtResource("16_58oju")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_hscmk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_tujwq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_jy420")
+}],
+"loop": true,
+"name": &"swim",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": ExtResource("6_op7ga")
 }, {
 "duration": 1.0,
@@ -150,7 +171,7 @@ size = Vector2(6, 12)
 radius = 4.0
 height = 16.0
 
-[node name="Player" type="CharacterBody2D" unique_id=697751416 groups=["player"]]
+[node name="Player" type="CharacterBody2D" groups=["player"]]
 collision_layer = 3
 collision_mask = 5
 floor_snap_length = 0.0
@@ -158,33 +179,36 @@ script = ExtResource("1_onrkg")
 metadata/_edit_horizontal_guides_ = [-4.0]
 metadata/_edit_group_ = true
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=277901428]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 position = Vector2(-0.01201725, 0.097383976)
 scale = Vector2(0.5192693, 0.47136202)
 sprite_frames = SubResource("SpriteFrames_onrkg")
+animation = &"swim"
+frame = 3
+frame_progress = 0.77049243
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=776174900]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 light_mask = 2
 visibility_layer = 3
 position = Vector2(0, 1)
 scale = Vector2(0.75999963, 0.7599993)
 shape = SubResource("CapsuleShape2D_i3pqv")
 
-[node name="Hurtbox" type="Area2D" parent="." unique_id=624262781 groups=["player"]]
+[node name="Hurtbox" type="Area2D" parent="." groups=["player"]]
 collision_layer = 2
 collision_mask = 7
 monitorable = false
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox" unique_id=1200547728]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
 shape = SubResource("RectangleShape2D_onrkg")
 
-[node name="Hitbox" type="Area2D" parent="." unique_id=1376053596 groups=["player"]]
+[node name="Hitbox" type="Area2D" parent="." groups=["player"]]
 collision_layer = 2
 collision_mask = 2
 monitorable = false
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" unique_id=1226490016 groups=["player"]]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" groups=["player"]]
 light_mask = 2
 visibility_layer = 2
 position = Vector2(7, 7.1054274e-15)
@@ -192,19 +216,19 @@ rotation = 1.5707964
 scale = Vector2(0.49755543, 0.43971813)
 shape = SubResource("CapsuleShape2D_bwjto")
 
-[node name="Sprite2D" type="Sprite2D" parent="Hitbox" unique_id=1010275150]
+[node name="Sprite2D" type="Sprite2D" parent="Hitbox"]
 visible = false
 position = Vector2(12, 0)
 scale = Vector2(0.11826371, 0.05860278)
 texture = ExtResource("15_606se")
 
-[node name="CooldownTimer" type="Timer" parent="Hitbox" unique_id=123707334]
+[node name="CooldownTimer" type="Timer" parent="Hitbox"]
 one_shot = true
 
-[node name="AttackTimer" type="Timer" parent="Hitbox" unique_id=1132010722]
+[node name="AttackTimer" type="Timer" parent="Hitbox"]
 wait_time = 0.1
 
-[node name="Camera2D" type="Camera2D" parent="." unique_id=1390362156]
+[node name="Camera2D" type="Camera2D" parent="."]
 process_callback = 0
 position_smoothing_enabled = true
 script = ExtResource("16_dy8o3")

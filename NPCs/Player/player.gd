@@ -13,6 +13,9 @@ var health = 10
 var screen_size
 var attacking = false
 
+var normal_sprite_scale: Vector2
+var swim_sprite_scale: Vector2 = Vector2(0.035, 0.035)
+
 # -----------------------------
 # UNDERWATER SETTINGS
 # -----------------------------
@@ -27,6 +30,7 @@ var active_water_current: Vector2 = Vector2.ZERO
 
 func _ready() -> void:
 	screen_size = get_viewport_rect().size
+	normal_sprite_scale = $AnimatedSprite2D.scale
 
 	add_to_group("player")
 
@@ -85,6 +89,7 @@ func _physics_process(delta: float) -> void:
 
 	if Input.is_action_just_pressed("Attack") and not attacking:
 		attacking = true
+		$AnimatedSprite2D.scale = normal_sprite_scale
 		$AnimatedSprite2D.play("attack")
 
 		# Freeze horizontal movement for the attack
@@ -100,6 +105,7 @@ func _physics_process(delta: float) -> void:
 	if attacking:
 		# Prevent sliding during attack animation
 		velocity.x = 0
+		$AnimatedSprite2D.scale = normal_sprite_scale
 	else:
 		if direction != 0:
 			if is_underwater:
@@ -108,24 +114,33 @@ func _physics_process(delta: float) -> void:
 			else:
 				velocity.x = direction * speed
 
-			if speed == walk_speed:
+			if is_underwater:
+				$AnimatedSprite2D.scale = swim_sprite_scale
+				$AnimatedSprite2D.play("swim")
+			elif speed == walk_speed:
+				$AnimatedSprite2D.scale = normal_sprite_scale
 				$AnimatedSprite2D.play("walk")
 			else:
+				$AnimatedSprite2D.scale = normal_sprite_scale
 				$AnimatedSprite2D.play("sprint")
 		else:
 			if is_underwater:
 				velocity.x = move_toward(velocity.x, active_water_current.x, active_water_drag * delta)
+				$AnimatedSprite2D.scale = swim_sprite_scale
+				$AnimatedSprite2D.play("swim")
 			else:
 				velocity.x = move_toward(velocity.x, 0.0, walk_speed)
-
-			$AnimatedSprite2D.play("default")
+				$AnimatedSprite2D.scale = normal_sprite_scale
+				$AnimatedSprite2D.play("default")
 
 	move_and_slide()
+
 
 func _update_hud_health() -> void:
 	var hud = get_tree().get_first_node_in_group("hud")
 	if hud:
 		hud.update_hp(health)
+
 
 func hit(amount: int) -> void:
 	health -= amount
@@ -190,6 +205,7 @@ func enter_water(settings: Dictionary = {}) -> void:
 
 func exit_water() -> void:
 	is_underwater = false
+	$AnimatedSprite2D.scale = normal_sprite_scale
 
 	# Optional: small upward pop when leaving water.
 	if velocity.y < 0:

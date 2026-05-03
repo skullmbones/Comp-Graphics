@@ -180,6 +180,8 @@ func _on_animation_finished() -> void:
 	
 	if anim.animation == "attack":
 		attack_applied = false
+		await get_tree().create_timer(1).timeout
+		anim.animation = "default"
 
 		if player != null:
 			state = State.CHASE
@@ -196,7 +198,9 @@ func _apply_dir_to_rays() -> void:
 	ground_ray.target_position.x = abs(ground_ray.target_position.x) * dir
 	wall_ray.target_position.x = abs(wall_ray.target_position.x) * dir
 
-	anim.flip_h = (dir == 1)
+	if not anim.animation == "attack":
+		anim.flip_h = (dir == 1)
+		$TongueHitbox.scale.x = dir
 
 func _play_anim(animation_name: String) -> void:
 	if anim.animation != animation_name:
@@ -228,15 +232,13 @@ func _on_tongue_hitbox_area_entered(area: Area2D) -> void:
 
 func take_damage(amount: int) -> void:
 	health -= amount
-	anim.play("damage")
-
-	await get_tree().create_timer(1).timeout
+	$AnimatedSprite2D.modulate = Color(1, 0.4, 0.4)
+	await get_tree().create_timer(0.1).timeout
+	$AnimatedSprite2D.modulate = Color(1, 1, 1)
 
 	if health <= 0:
 		spawn_key_piece()
 		queue_free()
-	else:
-		_play_anim("walk")
 func spawn_key_piece() -> void:
 	var key = $"../Objective/key1"
 
@@ -249,3 +251,12 @@ func _on_hurtbox_area_entered(area: Area2D) -> void:
 	if area.is_in_group("player"):
 		take_damage(10)
 		print(health)
+
+
+func _on_animated_sprite_2d_animation_changed() -> void:
+	if $AnimatedSprite2D.animation == "attack" and $AnimatedSprite2D.flip_h == false:
+		$AnimatedSprite2D.offset = Vector2(-11, 0)
+	elif $AnimatedSprite2D.animation == "attack" and $AnimatedSprite2D.flip_h == true:
+		$AnimatedSprite2D.offset = Vector2(11, 0)
+	else:
+		$AnimatedSprite2D.offset = Vector2(0, 2)

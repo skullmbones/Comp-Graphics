@@ -149,7 +149,11 @@ func hit(amount: int) -> void:
 	var hud = get_tree().get_first_node_in_group("hud")
 	if hud:
 		hud.update_hp(health)
-
+	
+	$AnimatedSprite2D.modulate = Color(1, 0.4, 0.4)
+	await get_tree().create_timer(0.1).timeout
+	$AnimatedSprite2D.modulate = Color(1, 1, 1)
+	
 	emit_signal("health_changed", health, max_health)
 
 	if health <= 0:

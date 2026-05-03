@@ -1,4 +1,4 @@
-[gd_scene load_steps=61 format=3 uid="uid://dgp4g0skpg8uy"]
+[gd_scene format=3 uid="uid://dgp4g0skpg8uy"]
 
 [ext_resource type="Script" uid="uid://c7edgb4mrdfmr" path="res://NPCs/UpsiderDowner/upside_downer.gd" id="1_buoac"]
 [ext_resource type="Texture2D" uid="uid://extiqhkws2y1" path="res://Assets/Upside Downer/UDstandright.png" id="2_xmi61"]
@@ -246,57 +246,59 @@ size = Vector2(20.500004, 28.877554)
 [sub_resource type="CircleShape2D" id="CircleShape2D_ytmch"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7pjuf"]
+size = Vector2(16.064209, 17.970757)
 
-[node name="UpsideDowner" type="CharacterBody2D"]
+[node name="UpsideDowner" type="CharacterBody2D" unique_id=343560042]
 collision_layer = 4
 collision_mask = 3
 floor_snap_length = 0.0
 script = ExtResource("1_buoac")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=647039834]
 texture_filter = 1
 position = Vector2(0, -1)
 scale = Vector2(1.4728231, 1.2998813)
 sprite_frames = SubResource("SpriteFrames_6vnh3")
-animation = &"kill"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=592168086]
 position = Vector2(0.50000364, 1.2999983)
 scale = Vector2(1.9999993, 1.9599999)
 shape = SubResource("RectangleShape2D_h5jy6")
 
-[node name="ground" type="RayCast2D" parent="."]
+[node name="ground" type="RayCast2D" parent="." unique_id=1576198472]
 position = Vector2(0, -1)
 scale = Vector2(1, 1.9599999)
 target_position = Vector2(16, 32)
 
-[node name="wall" type="RayCast2D" parent="."]
+[node name="wall" type="RayCast2D" parent="." unique_id=1273349469]
 position = Vector2(0, -1)
 scale = Vector2(1, 1.9599999)
 target_position = Vector2(16, 0)
 
-[node name="vision" type="Area2D" parent="."]
+[node name="vision" type="Area2D" parent="." unique_id=553729800]
 light_mask = 4
 visibility_layer = 3
 position = Vector2(0, -1)
 scale = Vector2(1, 1.9599999)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="vision"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="vision" unique_id=471179394]
 scale = Vector2(14, 1)
 shape = SubResource("CircleShape2D_ytmch")
 debug_color = Color(0.3866088, 0.4454574, 0.2274054, 0.41960785)
 
-[node name="Hurtbox" type="Area2D" parent="."]
+[node name="Hurtbox" type="Area2D" parent="." unique_id=564344470]
 position = Vector2(0, -1)
 scale = Vector2(1, 1.9599999)
 collision_layer = 2
 collision_mask = 2
 monitorable = false
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox" unique_id=2025165292]
 light_mask = 2
 visibility_layer = 2
-scale = Vector2(2.3655074, 1.5898846)
+position = Vector2(1.0000001, 1.5306123)
+scale = Vector2(2.365507, 1.5898844)
 shape = SubResource("RectangleShape2D_7pjuf")
 
+[connection signal="animation_changed" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_changed"]
 [connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]

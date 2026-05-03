@@ -242,3 +242,12 @@ func take_damage(amount) -> void:
 func _on_hurtbox_area_entered(area: Area2D) -> void:
 	if area.is_in_group("player"):
 		take_damage(25)
+
+
+func _on_animated_sprite_2d_animation_changed() -> void:
+	if $AnimatedSprite2D.animation == "kill" and $AnimatedSprite2D.flip_h == false:
+		$AnimatedSprite2D.offset = Vector2(10, -1)
+	elif $AnimatedSprite2D.animation == "kill" and $AnimatedSprite2D.flip_h == true:
+		$AnimatedSprite2D.offset = Vector2(-10, -1)
+	else:
+		$AnimatedSprite2D.offset = Vector2.ZERO

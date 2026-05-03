@@ -8,8 +8,8 @@ signal health_changed(current_health, max_health)
 
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
-var max_health = 100
-var health = 100
+var max_health = 10
+var health = 10
 var screen_size
 var attacking = false
 
@@ -41,6 +41,7 @@ func _ready() -> void:
 	$Hitbox/Sprite2D.visible = false
 
 	emit_signal("health_changed", health, max_health)
+	call_deferred("_update_hud_health")
 
 
 func _physics_process(delta: float) -> void:
@@ -121,10 +122,19 @@ func _physics_process(delta: float) -> void:
 
 	move_and_slide()
 
+func _update_hud_health() -> void:
+	var hud = get_tree().get_first_node_in_group("hud")
+	if hud:
+		hud.update_hp(health)
 
 func hit(amount: int) -> void:
 	health -= amount
 	health = clamp(health, 0, max_health)
+	
+	var hud = get_tree().get_first_node_in_group("hud")
+	if hud:
+		hud.update_hp(health)
+
 	emit_signal("health_changed", health, max_health)
 
 	if health <= 0:

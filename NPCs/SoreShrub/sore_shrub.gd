@@ -1,8 +1,8 @@
 extends CharacterBody2D
 
-@export var max_health: int = 50
-@export var attack_damage: int = 25
-@export var touch_damage: int = 15
+@export var max_health: int = 5
+@export var attack_damage: int = 2
+@export var touch_damage: int = 1
 @export var touch_cooldown: float = 0.5
 @export var gravity: float = 1200.0
 

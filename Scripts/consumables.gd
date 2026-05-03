@@ -1,6 +1,6 @@
 extends Area2D
 
-@export var heal_amount: int = 40
+@export var heal_amount: int = 4
 @export var destroy_on_use: bool = true
 
 # Optional:
@@ -25,7 +25,11 @@ func _on_body_entered(body: Node) -> void:
 
 	# Heal, but never go above max_health
 	body.health = clamp(body.health + heal_amount, 0, body.max_health)
-
+	
+	var hud = get_tree().get_first_node_in_group("hud")
+	if hud:
+		hud.update_hp(body.health)
+	
 	# Remove the consumable after use
 	if destroy_on_use:
 		queue_free()

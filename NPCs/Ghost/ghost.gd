@@ -21,7 +21,7 @@ func take_damage(amount) -> void:
 
 func _on_area_2d_area_entered(area: Area2D) -> void:
 	if area.is_in_group("player"):
-		take_damage(25)
+		take_damage(20)
 
 func _on_vision_body_entered(body: Node2D) -> void:
 	if body.is_in_group("player"):

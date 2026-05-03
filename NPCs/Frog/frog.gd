@@ -221,7 +221,7 @@ func _on_tongue_hitbox_area_entered(area: Area2D) -> void:
 		var target = area.get_parent()
 
 		if target and target.has_method("hit"):
-			target.hit(20)
+			target.hit(2)
 
 		tongue_hitbox.monitoring = false
 		tongue_hitbox.monitorable = false
@@ -230,7 +230,7 @@ func take_damage(amount: int) -> void:
 	health -= amount
 	anim.play("damage")
 
-	await get_tree().create_timer(0.25).timeout
+	await get_tree().create_timer(1).timeout
 
 	if health <= 0:
 		spawn_key_piece()

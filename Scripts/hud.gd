@@ -1,6 +1,6 @@
 extends CanvasLayer
 
-@onready var hp_bar: ProgressBar = $LeftMargin/VBoxContainer/HPBar
+@onready var hp_bar: TextureRect = $LeftMargin/VBoxContainer/HPBar
 @onready var timer_label: Label = $TimerLabel
 
 @onready var key_piece_1: Sprite2D = $KeyHolder/KeyPiece1
@@ -15,9 +15,23 @@ var has_piece_1 := false
 var has_piece_2 := false
 var has_piece_3 := false
 
+
+var hp_textures = {
+		0: preload("res://Assets/hud/healthbar0.png"),
+		1: preload("res://Assets/hud/healthbar1.png"),
+		2: preload("res://Assets/hud/healthbar2.png"),
+		3: preload("res://Assets/hud/healthbar3.png"),
+		4: preload("res://Assets/hud/healthbar4.png"),
+		5: preload("res://Assets/hud/healthbar5.png"),
+		6: preload("res://Assets/hud/healthbar6.png"),
+		7: preload("res://Assets/hud/healthbar7.png"),
+		8: preload("res://Assets/hud/healthbar8.png"),
+		9: preload("res://Assets/hud/healthbar9.png"),
+		10: preload("res://Assets/hud/healthbar10.png"),
+		
+	}
 func _ready() -> void:
-	hp_bar.max_value = max_hp
-	hp_bar.value = current_hp
+	update_hp(current_hp)
 	update_key_display()
 	update_timer_text()
 
@@ -27,7 +41,7 @@ func _process(delta: float) -> void:
 
 func update_hp(value: int) -> void:
 	current_hp = clamp(value, 0, max_hp)
-	hp_bar.value = current_hp
+	hp_bar.texture = hp_textures[current_hp]
 
 func collect_key_piece(piece_id: int) -> void:
 	match piece_id:

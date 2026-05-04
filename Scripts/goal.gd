@@ -12,3 +12,4 @@ func _on_body_entered(body: Node2D) -> void:
 func open() -> void:
 	var texture = load('res://ldtk/cageopen.png')
 	$Sprite2D.texture = texture
+	$StaticBody2D.queue_free()

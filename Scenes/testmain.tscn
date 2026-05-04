@@ -63,7 +63,10 @@ func _ready() -> void:
 load_path = "res://.godot/imported/cageclosed.png-1541ba19959d2388db9577307d83724d.ctex"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ylfqa"]
-size = Vector2(56.792862, 30.115788)
+size = Vector2(61.104954, 31.639389)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_370q6"]
+size = Vector2(57.38037, 30.008537)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qqmwa"]
 size = Vector2(14.314854, 8.36911)
@@ -84,7 +87,7 @@ position = Vector2(72.00003, 192)
 scale = Vector2(1.3418899, 3.0657997)
 script = SubResource("GDScript_o2q7l")
 
-[node name="Goal" type="Area2D" parent="." unique_id=766032791]
+[node name="Goal" type="Area2D" parent="." unique_id=972861156]
 position = Vector2(5079.404, 148.7377)
 script = ExtResource("1_o2q7l")
 
@@ -94,8 +97,15 @@ scale = Vector2(1.667, 0.813)
 texture = SubResource("CompressedTexture2D_qqmwa")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Goal" unique_id=1181897869]
-position = Vector2(6672.604, 125.851456)
+position = Vector2(6672.6807, 124.76355)
 shape = SubResource("RectangleShape2D_ylfqa")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Goal" unique_id=899022988]
+position = Vector2(-5079.404, -148.7377)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Goal/StaticBody2D" unique_id=650293004]
+position = Vector2(11751.712, 273.66437)
+shape = SubResource("RectangleShape2D_370q6")
 
 [node name="Potion" type="Area2D" parent="." unique_id=659390320]
 position = Vector2(-0.00038909912, 0)
@@ -597,6 +607,7 @@ position = Vector2(6522.1445, 214.95207)
 scale = Vector2(1.0595883, 0.4911605)
 
 [connection signal="body_entered" from="Goal" to="Goal" method="_on_body_entered"]
+[connection signal="body_entered" from="Goal" to="Goal/StaticBody2D" method="_on_goal_body_entered"]
 [connection signal="body_entered" from="Potion" to="Potion" method="_on_body_entered"]
 [connection signal="pressed" from="GameOver/Retry" to="GameOver" method="_on_retry_pressed"]
 [connection signal="pressed" from="GameOver/Quit" to="GameOver" method="_on_quit_pressed"]

@@ -39,6 +39,7 @@ var spawn_x := 0.0
 @onready var anim: AnimatedSprite2D = $AnimatedSprite2D
 @onready var tongue_hitbox: Area2D = $TongueHitbox
 
+
 func _ready() -> void:
 	spawn_x = global_position.x
 	_apply_dir_to_rays()
@@ -49,8 +50,9 @@ func _ready() -> void:
 	anim.frame_changed.connect(_on_frame_changed)
 	anim.animation_finished.connect(_on_animation_finished)
 	tongue_hitbox.area_entered.connect(_on_tongue_hitbox_area_entered)
-	tongue_hitbox.monitoring = false
-	tongue_hitbox.monitorable = false
+
+	_set_tongue_hitbox_active(false)
+
 
 func _physics_process(delta: float) -> void:
 	if not is_on_floor():
@@ -72,6 +74,7 @@ func _physics_process(delta: float) -> void:
 			_return_to_patrol()
 
 	move_and_slide()
+
 
 func _patrol() -> void:
 	_play_anim("walk")
@@ -100,6 +103,7 @@ func _patrol() -> void:
 	if player != null:
 		state = State.CHASE
 
+
 func _chase() -> void:
 	if player == null:
 		state = State.RETURN
@@ -119,9 +123,11 @@ func _chase() -> void:
 	if not ground_ray.is_colliding():
 		_turn()
 
+
 func _attack() -> void:
 	velocity.x = 0
 	_play_anim("attack")
+
 
 func _return_to_patrol() -> void:
 	_play_anim("walk")
@@ -144,6 +150,7 @@ func _return_to_patrol() -> void:
 	if _turn_lock <= 0.0 and (wall_ray.is_colliding() or not ground_ray.is_colliding()):
 		_turn()
 
+
 func _start_attack() -> void:
 	if state == State.ATTACK:
 		return
@@ -152,6 +159,7 @@ func _start_attack() -> void:
 	velocity.x = 0
 	attack_applied = false
 	anim.play("attack")
+
 
 func _player_in_attack_window() -> bool:
 	if player == null:
@@ -165,18 +173,22 @@ func _player_in_attack_window() -> bool:
 
 	return in_front and close_enough
 
+
+func _set_tongue_hitbox_active(active: bool) -> void:
+	tongue_hitbox.set_deferred("monitoring", active)
+	tongue_hitbox.set_deferred("monitorable", active)
+
+
 func _on_frame_changed() -> void:
 	if anim.animation == "attack" and anim.frame == attack_frame and not attack_applied:
 		attack_applied = true
-		tongue_hitbox.monitoring = true
-		tongue_hitbox.monitorable = true
+		_set_tongue_hitbox_active(true)
 	else:
-		tongue_hitbox.monitoring = false
-		tongue_hitbox.monitorable = false
+		_set_tongue_hitbox_active(false)
+
 
 func _on_animation_finished() -> void:
-	tongue_hitbox.monitoring = false
-	tongue_hitbox.monitorable = false
+	_set_tongue_hitbox_active(false)
 	
 	if anim.animation == "attack":
 		attack_applied = false
@@ -188,10 +200,12 @@ func _on_animation_finished() -> void:
 		else:
 			state = State.RETURN
 
+
 func _turn() -> void:
 	dir *= -1
 	_turn_lock = turn_cooldown
 	_apply_dir_to_rays()
+
 
 func _apply_dir_to_rays() -> void:
 	tongue_hitbox.position.x = abs(tongue_hitbox.position.x) * dir
@@ -202,9 +216,11 @@ func _apply_dir_to_rays() -> void:
 		anim.flip_h = (dir == 1)
 		$TongueHitbox.scale.x = dir
 
+
 func _play_anim(animation_name: String) -> void:
 	if anim.animation != animation_name:
 		anim.play(animation_name)
+
 
 func _on_vision_body_entered(body: Node) -> void:
 	if body.is_in_group("player"):
@@ -213,12 +229,14 @@ func _on_vision_body_entered(body: Node) -> void:
 		if state != State.ATTACK:
 			state = State.CHASE
 
+
 func _on_vision_body_exited(body: Node) -> void:
 	if body == player:
 		player = null
 
 		if state != State.ATTACK:
 			state = State.RETURN
+
 
 func _on_tongue_hitbox_area_entered(area: Area2D) -> void:
 	if area.is_in_group("player"):
@@ -227,8 +245,8 @@ func _on_tongue_hitbox_area_entered(area: Area2D) -> void:
 		if target and target.has_method("hit"):
 			target.hit(2)
 
-		tongue_hitbox.monitoring = false
-		tongue_hitbox.monitorable = false
+		_set_tongue_hitbox_active(false)
+
 
 func take_damage(amount: int) -> void:
 	health -= amount
@@ -239,6 +257,8 @@ func take_damage(amount: int) -> void:
 	if health <= 0:
 		spawn_key_piece()
 		queue_free()
+
+
 func spawn_key_piece() -> void:
 	var key = $"../Objective/key1"
 
@@ -246,6 +266,7 @@ func spawn_key_piece() -> void:
 		key.global_position = global_position
 		key.visible = true
 		key.monitoring = true
+
 
 func _on_hurtbox_area_entered(area: Area2D) -> void:
 	if area.is_in_group("player"):

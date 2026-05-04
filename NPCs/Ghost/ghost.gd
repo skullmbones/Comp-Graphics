@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 var bullet = preload("res://NPCs/Ghost/ghost_bullet.tscn")
-var ghostheart = preload("res://Scenes/ghostheart.tscn")
+var ghostheart = preload("res://NPCs/Ghost/ghostheart.tscn")
 
 @onready var player = null
 
@@ -9,34 +9,21 @@ var health = 10
 var inrange = false
 var attack = false
 var dead = false
-
 var can_take_damage = true
-var player_touching_hurtbox: Node2D = null
-
-# Add your player's attack animation names here if different.
-var player_attack_animation_names = [
-	"attack",
-	"slash",
-	"sword",
-	"melee",
-	"hit"
-]
 
 
 func _ready() -> void:
+	# Your ghost damage Area2D is named exactly "Area2D".
 	if has_node("Area2D"):
 		var hurtbox: Area2D = $Area2D
 		hurtbox.monitoring = true
 		hurtbox.monitorable = true
 
+		# Broad mask while debugging so it can see the player's Hitbox.
+		hurtbox.collision_mask = 0xFFFFFFFF
+
 		if not hurtbox.area_entered.is_connected(_on_area_2d_area_entered):
 			hurtbox.area_entered.connect(_on_area_2d_area_entered)
-
-		if not hurtbox.body_entered.is_connected(_on_area_2d_body_entered):
-			hurtbox.body_entered.connect(_on_area_2d_body_entered)
-
-		if not hurtbox.body_exited.is_connected(_on_area_2d_body_exited):
-			hurtbox.body_exited.connect(_on_area_2d_body_exited)
 
 		print("Ghost hurtbox ready: ", hurtbox.name)
 	else:
@@ -50,75 +37,26 @@ func _physics_process(_delta: float) -> void:
 	if !attack:
 		$AnimatedSprite2D.play("walk")
 
-	_check_player_attack_overlap()
+	# Backup check in case Hitbox was already overlapping when it became active.
+	_check_sword_overlap()
 
 
-func _check_player_attack_overlap() -> void:
+func _check_sword_overlap() -> void:
 	if dead:
 		return
 
 	if !can_take_damage:
 		return
 
-	if player_touching_hurtbox == null:
+	if !has_node("Area2D"):
 		return
 
-	if _is_player_attacking(player_touching_hurtbox):
-		take_damage(10)
+	var hurtbox: Area2D = $Area2D
 
-
-func _is_player_attacking(player_node: Node) -> bool:
-	if player_node == null:
-		return false
-
-	# Best option: if your player.gd has a method called is_attacking().
-	if player_node.has_method("is_attacking"):
-		return player_node.is_attacking()
-
-	# Check common boolean variable names on the player.
-	if _has_property(player_node, "is_attacking") and player_node.get("is_attacking") == true:
-		return true
-
-	if _has_property(player_node, "attacking") and player_node.get("attacking") == true:
-		return true
-
-	if _has_property(player_node, "attack") and player_node.get("attack") == true:
-		return true
-
-	# Check player's current animation name.
-	var sprite = _find_animated_sprite(player_node)
-
-	if sprite != null:
-		var current_anim = sprite.animation.to_lower()
-
-		for attack_anim in player_attack_animation_names:
-			if current_anim.contains(attack_anim):
-				return true
-
-	return false
-
-
-func _find_animated_sprite(node: Node) -> AnimatedSprite2D:
-	if node == null:
-		return null
-
-	if node is AnimatedSprite2D:
-		return node
-
-	for child in node.get_children():
-		var result = _find_animated_sprite(child)
-		if result != null:
-			return result
-
-	return null
-
-
-func _has_property(node: Object, property_name: String) -> bool:
-	for prop in node.get_property_list():
-		if prop.name == property_name:
-			return true
-
-	return false
+	for area in hurtbox.get_overlapping_areas():
+		if _is_player_sword_hitbox(area):
+			take_damage(10)
+			return
 
 
 func take_damage(amount) -> void:
@@ -155,12 +93,21 @@ func die() -> void:
 	if dead:
 		return
 
+	# Save the exact position BEFORE disabling/freeing the ghost.
+	var heart_drop_position: Vector2 = global_position
+
+	# If you want it to match the visible sprite more closely, use this instead:
+	if has_node("AnimatedSprite2D"):
+		heart_drop_position = $AnimatedSprite2D.global_position
+
+	# Slightly above the ghost so it is visible and not inside the floor.
+	heart_drop_position += Vector2(0, -12)
+
 	dead = true
 	can_take_damage = false
 	inrange = false
 	attack = false
 	player = null
-	player_touching_hurtbox = null
 
 	if has_node("Area2D"):
 		$Area2D.set_deferred("monitoring", false)
@@ -170,16 +117,33 @@ func die() -> void:
 		$vision.set_deferred("monitoring", false)
 		$vision.set_deferred("monitorable", false)
 
-	drop_ghostheart()
+	print("Ghost died at: ", global_position)
+	print("Heart should drop at: ", heart_drop_position)
+
+	drop_ghostheart(heart_drop_position)
+
 	call_deferred("queue_free")
 
 
-func drop_ghostheart() -> void:
+func drop_ghostheart(drop_position: Vector2) -> void:
 	var drop = ghostheart.instantiate()
-	drop.global_position = global_position
 
-	if get_tree().current_scene != null:
-		get_tree().current_scene.call_deferred("add_child", drop)
+	var parent_node = get_parent()
+	if parent_node == null:
+		parent_node = get_tree().current_scene
+
+	if parent_node == null:
+		print("ERROR: Could not drop ghostheart. No parent/current_scene found.")
+		return
+
+	# Add first, then set global_position.
+	# This avoids wrong placement caused by parent transforms.
+	parent_node.add_child(drop)
+	drop.global_position = drop_position
+	drop.z_index = 100
+	drop.visible = true
+
+	print("Ghostheart actually dropped at: ", drop.global_position)
 
 
 func _on_area_2d_area_entered(area: Area2D) -> void:
@@ -194,32 +158,8 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 	if _should_ignore_area(area):
 		return
 
-	# If you eventually add a real player attack Area2D, this will still support it.
-	if area.is_in_group("player_attack"):
+	if _is_player_sword_hitbox(area):
 		take_damage(10)
-		return
-
-
-func _on_area_2d_body_entered(body: Node2D) -> void:
-	if dead:
-		return
-
-	if body == null:
-		return
-
-	print("Something entered ghost damage body area: ", body.name, " Groups: ", body.get_groups())
-
-	if body.is_in_group("player"):
-		player_touching_hurtbox = body
-
-		# If the player enters while already attacking, damage immediately.
-		if _is_player_attacking(body):
-			take_damage(10)
-
-
-func _on_area_2d_body_exited(body: Node2D) -> void:
-	if body == player_touching_hurtbox:
-		player_touching_hurtbox = null
 
 
 func _should_ignore_area(area: Area2D) -> bool:
@@ -228,19 +168,48 @@ func _should_ignore_area(area: Area2D) -> bool:
 
 	var lower_name = area.name.to_lower()
 
+	# Ignore ghost's own vision area.
 	if lower_name == "vision":
 		return true
 
+	# Ignore ghost bullets.
 	if lower_name.contains("ghostbullet") or lower_name.contains("ghost_bullet"):
 		return true
 
 	var parent = area.get_parent()
-
 	if parent != null:
 		var parent_name = parent.name.to_lower()
 
 		if parent_name.contains("ghostbullet") or parent_name.contains("ghost_bullet"):
 			return true
+
+	return false
+
+
+func _is_player_sword_hitbox(area: Area2D) -> bool:
+	if area == null:
+		return false
+
+	var lower_name = area.name.to_lower()
+
+	# Your player's sword Area2D is named Hitbox.
+	if lower_name != "hitbox":
+		# Also allow this if you later add the group manually.
+		if not area.is_in_group("player_attack"):
+			return false
+
+	# Make sure this Hitbox belongs to the Player, not a random enemy/bullet.
+	var node = area.get_parent()
+
+	while node != null:
+		if node.is_in_group("player"):
+			return true
+
+		node = node.get_parent()
+
+	# Backup: if you manually add player_attack group, accept it.
+	if area.is_in_group("player_attack"):
+		return true
 
 	return false
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://b8ro4mkphbyo6"]
+[gd_scene format=3 uid="uid://b8ro4mkphbyo6"]
 
 [ext_resource type="Script" uid="uid://c3pnb2eiwhm4q" path="res://Scripts/consumables.gd" id="1_ejntx"]
 [ext_resource type="Texture2D" uid="uid://d3kocmqn7a7e6" path="res://ldtk/ghostheart.png" id="2_3oij6"]
